@@ -17,7 +17,7 @@ classification.
 
 * 
 
-## Analysis of  tutorials
+## Analysis Tutorials
 ### Application of the MAB scheme to membrane permeability simulations
 
 * 
