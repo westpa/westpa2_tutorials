@@ -1,0 +1,14 @@
+Using the Adaptive Worm Scheme
+1.	Download the following two files from Github Repository (to make) adaptive.py, manager.py and place them in the directory you are running the simulation from (WEST_SIM_ROOT)
+2.	In your west.cfg file you want the following
+west:
+  system:
+    driver: adaptive.System
+    module_path: $WEST_SIM_ROOT
+  drivers:
+    sim_manager: manager.WESimManager
+    module_path: $WEST_SIM_ROOT
+
+3.	  In your westpa_scripts folder. change the name of runseg.sh to runseg2.sh 
+4.	 Make desired changes to adaptive.py (instructions within file)
+
