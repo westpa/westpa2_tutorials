@@ -69,7 +69,7 @@ echo -e "${COMMAND}" | $CPPTRAJ
 #paste <(cat RMS_BN_D.dat | tail -n +2 | awk '{print $2}') > $WEST_PCOORD_RETURN
 #cat RMS_BS_D.dat | tail -n +2 | awk '{print $2}' > $WEST_PCOORD_RETURN
 
-paste <(cat RMS_BN_D.dat | tail -n +2 | awk '{print $2}')i < (cat Num_Contacts.dat | tail -n +2 | awk '{print $4}') > $WEST_PCOORD_RETURN
+paste <(cat RMS_BN_D.dat | tail -n +2 | awk '{print $2}') < (cat Num_Contacts.dat | tail -n +2 | awk '{print $4}') > $WEST_PCOORD_RETURN
 
 cat RMS_Backbone.dat | tail -n +2 | awk '{print $2}' > $WEST_RMS_BACKBONE_RETURN
 cat RoG.dat | tail -n +2 | awk '{print $2}' > $WEST_ROG_RETURN
