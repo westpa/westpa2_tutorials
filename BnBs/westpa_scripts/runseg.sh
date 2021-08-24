@@ -37,6 +37,7 @@ COMMAND="$COMMAND trajin $WEST_CURRENT_SEG_DATA_REF/seg.nc \n"
 COMMAND="$COMMAND reference $WEST_SIM_ROOT/reference/1brs_cg_eq2_resolv.pdb [reference] \n"
 COMMAND="$COMMAND autoimage \n"
 COMMAND="$COMMAND rms RMS_BN :1-110 reference out RMS_BN.dat \n"
+COMMAND="$COMMAND vector CoM center :111-199 out CoM.dat \n"
 COMMAND="$COMMAND rms RMS_BS (:111-199) reference out RMS_BS.dat nofit \n"
 COMMAND="$COMMAND rms RMS_BS_D :145,149 reference out RMS_BS_D.dat nofit \n"
 COMMAND="$COMMAND rms RMS_BS_D35 :145 reference out RMS_BS35.dat nofit \n"
@@ -51,9 +52,7 @@ COMMAND="$COMMAND surf BN_SASA :1-110 out BN_SASA.dat \n"
 COMMAND="$COMMAND surf BS_SASA :111-199 out BS_SASA.dat \n"
 COMMAND="$COMMAND secstruct Secondary_Struct_BN out Secondary_Struct_BN.dat :1-110 \n"
 COMMAND="$COMMAND secstruct Secondary_Struct_BS out Secondary_Struct_BS.dat :111-199 \n"
-COMMAND="$COMMAND nativecontacts name Num_Contacts :1-110 :111-199 byresidue mindist distance 4.5 out Num_Contacts.dat ref [reference] \n"
-COMMAND="$COMMAND center :1-110 mass \n"
-COMMAND="$COMMAND \n"
+COMMAND="$COMMAND nativecontacts name Num_Contacts_res :1-110 :111-199 mindist distance 4.5 out Num_Contacts.dat ref [reference] \n"
 COMMAND="$COMMAND go\n"
 
 echo -e "${COMMAND}" | $CPPTRAJ
@@ -67,36 +66,42 @@ echo -e "${COMMAND}" | $CPPTRAJ
 #echo -e "${COMMAND}" | $CPPTRAJ
 
 #cat $RMSD | tail -n +2 | awk '{print $2}' > $WEST_PCOORD_RETURN
-#paste <(cat RMS_BN_D.dat | tail -n +2 | awk {'print $2'}) > $WEST_PCOORD_RETURN
-cat RMS_BS_D.dat | tail -n +2 | awk {'print $2'} > $WEST_PCOORD_RETURN
-cat RMS_Backbone.dat | tail -n +2 | awk {'print $2'} > $WEST_RMS_BACKBONE_RETURN
-cat RoG.dat | tail -n +2 | awk {'print $2'} > $WEST_ROG_RETURN
-cat RoG_BN.dat | tail -n +2 | awk {'print $2'} > $WEST_ROG_BN_RETURN
-cat RoG_BS.dat | tail -n +2 | awk {'print $2'} > $WEST_ROG_BS_RETURN
+#paste <(cat RMS_BN_D.dat | tail -n +2 | awk '{print $2}') > $WEST_PCOORD_RETURN
+#cat RMS_BS_D.dat | tail -n +2 | awk '{print $2}' > $WEST_PCOORD_RETURN
 
-cat RMS_BN.dat | tail -n +2 | awk {'print $2'} > $WEST_RMS_BN_RETURN
-cat RMS_BS.dat | tail -n +2 | awk {'print $2'} > $WEST_RMS_BS_RETURN
-cat RMS_BS_D.dat | tail -n +2 | awk {'print $2'} > $WEST_RMS_BS_D_RETURN
+paste <(cat RMS_BN_D.dat | tail -n +2 | awk '{print $2}')i < (cat Num_Contacts.dat | tail -n +2 | awk '{print $4}') > $WEST_PCOORD_RETURN
 
-cat RMS_BS35.dat | tail -n +2 | awk {'print $2'} > $WEST_RMS_BS35_RETURN
-cat RMS_BS39.dat | tail -n +2 | awk {'print $2'} > $WEST_RMS_BS39_RETURN
-cat RMS_Backbone.dat | tail -n +2 | awk {'print $2'} > $WEST_RMS_BACKBONE_RETURN
-cat RMS_Heavy.dat | tail -n +2 | awk {'print $2'} > $WEST_RMS_HEAVY_RETURN
+cat RMS_Backbone.dat | tail -n +2 | awk '{print $2}' > $WEST_RMS_BACKBONE_RETURN
+cat RoG.dat | tail -n +2 | awk '{print $2}' > $WEST_ROG_RETURN
+cat RoG_BN.dat | tail -n +2 | awk '{print $2}' > $WEST_ROG_BN_RETURN
+cat RoG_BS.dat | tail -n +2 | awk '{print $2}' > $WEST_ROG_BS_RETURN
 
-cat BN_SASA.dat | tail -n +2 | awk {'print $2'} > $WEST_BN_SASA_RETURN
-cat BS_SASA.dat | tail -n +2 | awk {'print $2'} > $WEST_BS_SASA_RETURN
-cat Total_SASA.dat | tail -n +2 | awk {'print $2'} > $WEST_TOTAL_SASA_RETURN
-cat Secondary_Struct_BN.dat | tail -n +2 | awk {'print $7'} > $WEST_SECONDARY_STRUCT_BN_RETURN
-cat Secondary_Struct_BS.dat | tail -n +2 | awk {'print $7'} > $WEST_SECONDARY_STRUCT_BS_RETURN
-cat Num_Contacts.dat | tail -n +2 | awk {'print $2'} > $WEST_NUM_CONTACTS_RETURN
+cat CoM.dat | tail -n + 2 | awk '{print $2, $3, $4}' > $WEST_COM_RETURN
 
-cat Num_Contacts.dat | tail -n +2 | awk -v c=124 '{print $2/c}' > $WEST_PERCENT_CONTACTS_RETURN
+cat RMS_BN.dat | tail -n +2 | awk '{print $2}' > $WEST_RMS_BN_RETURN
+cat RMS_BS.dat | tail -n +2 | awk '{print $2}' > $WEST_RMS_BS_RETURN
+cat RMS_BS_D.dat | tail -n +2 | awk '{print $2}' > $WEST_RMS_BS_D_RETURN
+
+cat RMS_BS35.dat | tail -n +2 | awk '{print $2}' > $WEST_RMS_BS35_RETURN
+cat RMS_BS39.dat | tail -n +2 | awk '{print $2}' > $WEST_RMS_BS39_RETURN
+cat RMS_Backbone.dat | tail -n +2 | awk '{print $2}' > $WEST_RMS_BACKBONE_RETURN
+cat RMS_Heavy.dat | tail -n +2 | awk '{print $2}' > $WEST_RMS_HEAVY_RETURN
+
+cat BN_SASA.dat | tail -n +2 | awk '{print $2}' > $WEST_BN_SASA_RETURN
+cat BS_SASA.dat | tail -n +2 | awk '{print $2}' > $WEST_BS_SASA_RETURN
+cat Total_SASA.dat | tail -n +2 | awk '{print $2}' > $WEST_TOTAL_SASA_RETURN
+cat Secondary_Struct_BN.dat | tail -n +2 | awk '{print $7}' > $WEST_SECONDARY_STRUCT_BN_RETURN
+cat Secondary_Struct_BS.dat | tail -n +2 | awk '{print $7}' > $WEST_SECONDARY_STRUCT_BS_RETURN
+cat Num_Contacts.dat | tail -n +2 | awk '{print $2}' > $WEST_NUM_CONTACTS_RETURN
+
+cat Num_Contacts.dat | tail -n +2 | awk -v c=1011 '{print $2/c}' > $WEST_PERCENT_CONTACTS_RETURN
 
 
 # Clean up
+rm basis_all.prmtop
 rm RMS_BS.dat RMS_BN.dat RMS_BS_D.dat
 rm RMS_BS35.dat RMS_BS39.dat RoG.dat RoG_BN.dat RoG_BS.dat RMS_Heavy.dat RMS_Backbone.dat
-rm Total_SASA.dat BN_SASA.dat BS_SASA.dat Secondary_Struct_BN.dat Secondary_Struct_BS.dat Num_Contacts.dat Secondary_Struct_BN.dat.sum Secondary_Struct_BS.dat.sum
+rm Total_SASA.dat BN_SASA.dat BS_SASA.dat Secondary_Struct_BN.dat Secondary_Struct_BS.dat Num_Contacts.dat Secondary_Struct_BN.dat.sum Secondary_Struct_BS.dat.sum CoM.dat
 
 
 #if [ -f "seg-nowat.nc" ]; then
