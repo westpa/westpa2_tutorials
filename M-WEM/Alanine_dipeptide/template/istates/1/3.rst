@@ -1,0 +1,1 @@
+/home/dhiman/PhD/M-WEM-tutorial/Alanine_dipeptide/trial_1/cell_1/bstates/bstate.xml
