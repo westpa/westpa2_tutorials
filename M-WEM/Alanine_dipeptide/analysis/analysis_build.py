@@ -19,3 +19,7 @@ for i in range(len(milestones)-1):
     subprocess.call(["sed -i 's/LOW/%0.2f/g' %s/analysis.py"%(left,dir_name)], shell=True)
     subprocess.call(["sed -i 's/HIGH/%0.2f/g' %s/analysis.py"%(right,dir_name)], shell=True)
 
+
+#create directories for milestoning analysis
+
+os.system('mkdir cell_probability N_i_j_files R_i_files committor')
