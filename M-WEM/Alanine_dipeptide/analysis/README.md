@@ -12,6 +12,20 @@ The analysis.py script produces ```trajectories.pkl```, ```crossings.pkl``` and 
 
 * Perform analysis in all cells by ```./analyze_all_convergence.sh```. This will perform ```python analysis.py``` to produce the .pkl and .txt outputs for the final iteration. But, for the sake of checking convergence of our results, it will also produce similar files for some of the subsequent iterations. To do that, the script will copy the ```analysis.py``` to ```analysis_x.py``` (x = iteration number) and the ```w.niters``` inside analysis.py to the corresponding iteration number. Then it will produce ```trajectories_x.pkl```, ```crossings_x.pkl``` and the ```weights_x.txt``` files for each x.
 
-Note 1: This step can take several minutes to a few hours depending on a computing hardware. If you have access to a computing cluster, you may choose to submit this as a job.
+**Note 1:** This step can take several minutes to a few hours depending on a computing hardware. If you have access to a computing cluster, you may choose to submit this as a job.
 
-Note 2: The ```analyze_all_convergence.sh``` script is customizable. For example if you want to run all cells parallelly in a cluster you can create seperate bash script for each cell.
+**Note 2:** The ```analyze_all_convergence.sh``` script is customizable. For example if you want to run all cells parallelly in a cluster you can create seperate bash script for each cell.
+
+### Step 2 ###
+
+After the analysis of the WESTPA output files are done, we will proceed to analyze our results using the Markovian milestoning framework in two jupyter notebooks: ```kinetics.ipynb``` and ```free-energy-landscape.ipynb```. 
+
+* First run the ```kinetics.ipynb``` notebook to obtain the mean first passage time and the committors. This will also produce the probability distribution file in the milestone space. Details can be found inside the notebook
+
+* Next run the ```free-energy-landscape.ipynb``` to reconstruct the free energy landscape alng Phi and Psi coordinates from the M-WEM data.
+
+**Note:** before executing any notebook set the kernel to the environment in which you installed the MWEM software. If the kernel is not available, activate the jupyter notebook for that environment by executing 
+
+```python -m ipykernel install --user --name=westpa2```
+
+Replace "westpa2" with the environment in which you installed MWEM.
