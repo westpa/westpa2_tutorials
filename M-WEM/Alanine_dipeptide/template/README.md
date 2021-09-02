@@ -12,4 +12,4 @@ This template directory is virtually identical to the home directory for a regul
 
 * Two job submissions files (```run.sh``` and ```run.slurm```) are provided. You can use the one which is most suitable for your job submission platform. There is anaother file called ```restart.slurm```. This can be used to restart the simulation. But if you are restarting from a situation where your job crashed in the middle of an iterartion, you should refer to the WESTPA main tutorial about truncating trajectories.
 
-Note: In the main WESTPA tutorial you will find two files, ```init.sh``` and ```run.sh```. But we combined them together in one run.sh file (which includes equilibration too), because we found it is easier to submit many files for many milestone cells in this way. 
+**Note:** In the main WESTPA tutorial you will find two files, ```init.sh``` and ```run.sh```. But we combined them together in one run.sh file (which includes equilibration too), because we found it is easier to submit many files for many milestone cells in this way. 
