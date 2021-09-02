@@ -12,7 +12,7 @@ pip install .
 ```  
 Relevant pre-print: https://doi.org/10.1101/2021.06.26.450057
 
-* This tutorial is under construction. Currently all analysis is in python scripts and has not been ported to jupyter notebook.
+* This tutorial is under construction.
 
 ## Description
 This tutotorial covers M-WEM simulation for the gas phase Alanine dipeptide system described in the paper above.  
