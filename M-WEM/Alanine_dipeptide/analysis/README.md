@@ -6,7 +6,7 @@ The analysis will be done in two steps:
 
 ### Step 1 ###
 
-* Execute the following command ```python build_analysis.py```. It will produce directories ```cell_0``` through ```cell_7``` and copy the corresponding ```west.h5``` files (WESTPA output files) from the propagation directory into each cell within the ```analysis``` directory. It will also copy the west.cfg files (different from the west.cfg files for propagation), and the analysis.py files from ```westpa_analysis_files``` directory to each cell. The analysis.py file also has strings like "LOW" and "HIGH", which will be replaced by floating ponit numbers corresponding to the left and right milestone.
+* Execute the following command ```python analysis_build.py ```. It will produce directories ```cell_0``` through ```cell_7``` and copy the corresponding ```west.h5``` files (WESTPA output files) from the propagation directory into each cell within the ```analysis``` directory. It will also copy the west.cfg files (different from the west.cfg files for propagation), and the analysis.py files from ```westpa_analysis_files``` directory to each cell. The analysis.py file also has strings like "LOW" and "HIGH", which will be replaced by floating ponit numbers corresponding to the left and right milestone.
 
 The analysis.py script produces ```trajectories.pkl```, ```crossings.pkl``` and the ```weights.txt``` files. They contain the information on the trajectory traces (history of the segments in the final iteration), the time and location (which milestone right or left) of the milestone crossings, and the weight each traced trajectory respectively.  
 
@@ -16,6 +16,7 @@ The analysis.py script produces ```trajectories.pkl```, ```crossings.pkl``` and 
 
 **Note 2:** The ```analyze_all_convergence.sh``` script is customizable. For example if you want to run all cells parallelly in a cluster you can create seperate bash script for each cell.
 
+**Note 3:** ```analysis_build.py``` will also produce the following directories for milestoning analysis in Step 2: ```cell_probability```, ```N_i_j_files```, ```R_i_files```, and ```committor```. 
 ### Step 2 ###
 
 After the analysis of the WESTPA output files are done, we will proceed to analyze our results using the Markovian milestoning framework in two jupyter notebooks: ```kinetics.ipynb``` and ```free-energy-landscape.ipynb```. 
