@@ -30,17 +30,13 @@ cd $WEST_SIM_ROOT
 mkdir -pv $WEST_CURRENT_SEG_DATA_REF
 cd $WEST_CURRENT_SEG_DATA_REF
 
-#ln -sv $WEST_SIM_ROOT/common_files/bstate.pdb .
-#ln -sv $WEST_SIM_ROOT/common_files/DistanceReporter.py .
-#ln -sv $WEST_PARENT_DATA_REF/dist.dat ./parent.dat
 
-# Make symbolic links to the topology file and parameter files. These are not
+# Make symbolic links to the topology file, parameter and colvars files. These are not
 # unique to each segment.
 ln -sv $WEST_SIM_ROOT/common_files/*.psf .
 ln -sv $WEST_SIM_ROOT/common_files/*.pdb .
 ln -sv $WEST_SIM_ROOT/common_files/*.prm .
 ln -sv $WEST_SIM_ROOT/bstates/colvars.in colvars.in   #make sure the colvars.in is from bstates and not common_files
-#ln -sv $WEST_SIM_ROOT/common_files/toppar_water_ions_namd.str toppar_water_ions_namd.str
 
 # Either continue an existing tractory, or start a new trajectory. Here, both
 # cases are the same.  If you need to handle the cases separately, you can
@@ -56,9 +52,9 @@ sed "s/RAND/$WEST_RAND16/g" \
   $WEST_SIM_ROOT/common_files/md.conf > md.conf
 
 # This trajectory segment will start off where its parent segment left off.
-# The "ln" command makes symbolic links to the parent segment's edr, gro, and
-# and trr files. This is preferable to copying the files, since it doesn't
-# require writing all the data again.
+# The "ln" command makes symbolic links to the parent segment's coor, vel, 
+#xsc, and progress_coordinate files. This is preferable to copying the files, 
+#since it doesn't require writing all the data again.
 if [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_CONTINUES" ]; then
   ln -sv $WEST_PARENT_DATA_REF/seg.coor ./parent.coor
   ln -sv $WEST_PARENT_DATA_REF/seg.vel  ./parent.vel
@@ -78,17 +74,8 @@ fi
 
 ########################## Calculate and return data ###########################
 
-# Calculate the progress coordinate, which is the distance between the Na+ and
-# Cl- ions.  This custom Python script looks for the files nacl.psf and seg.dcd
-# The script outputs the distance between the ions at each timepoint, printing
-# one distance value per line to STDOUT.
-# Note that the script also loads the parent segment's .dcd file, in order to 
-# include the current segment's starting configuration (which is the same as the
-# parent segment's final configuration) in the calculation.
 
 echo "$(pwd)"
-#Calculate pcoord with MDAnalysis
-#python $WEST_SIM_ROOT/common_files/get_distance.py
 python $WEST_SIM_ROOT/westpa_scripts/calc_rxn_coor.py > progress_coordinate.dat
 cat progress_coordinate.dat > $WEST_PCOORD_RETURN
 
