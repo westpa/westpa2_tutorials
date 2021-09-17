@@ -3,7 +3,7 @@
 
 #equilibrate
 cd equilibration
-#/home/dhiman/NAMD_2.14_Linux-x86_64-multicore/namd2 +p 4 equilibration.conf > equilibration.log
+/home/dhiman/NAMD_2.14_Linux-x86_64-multicore/namd2 +p 4 equilibration.conf > equilibration.log
 #*** Make sure to provide the correct path to NAMD in your cluster in above line ***#
 
 python calc_rxn_coor.py > progress_coordinate.dat
