@@ -29,7 +29,7 @@ rm -rf traj_segs seg_logs istates west.h5 binbounds.txt
 mkdir   seg_logs traj_segs istates
 
 #copy files to bstate directory for starting points
-cp equilibration/distance.dat bstates/dist.dat
+cp equilibration/progress_coordinate.dat bstates/progress_coordinate.dat
 cp equilibration/milestone_equilibration.restart.coor bstates/seg.coor
 cp equilibration/milestone_equilibration.colvars.traj  bstates/seg.colvars.traj
 cp equilibration/milestone_equilibration.restart.vel  bstates/seg.vel
