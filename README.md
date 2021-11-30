@@ -9,7 +9,7 @@ classification.
 If you're interested in WESTPA 2.0, see our [WESTPA Developer's Guide](https://github.com/westpa/westpa/wiki/WESTPA-Developer's-Guide).
 
 ## Main Tutorials
-### Coarse-grained protein-protein binding simulations
+### Na+/Cl- association  simulations
 
 * 
 
