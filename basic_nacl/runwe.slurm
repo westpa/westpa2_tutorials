@@ -9,15 +9,22 @@
 #
 # run.sh
 #
-# Run the weighted ensemble simulation. Make sure you ran init.sh first!
+# Run the weighted ensemble simulation. Make sure you ran init.sh first for bash.
 #
 
-module purge
-module load intel/2017.1.132 amber/16
-module unload python
-export WEST_PYTHON=($which python2.7)
-source env.sh
 
-rm -f west.log
-$WEST_ROOT/bin/w_run --work-manager processes "$@" &> west.log
-${SLURM_JOB_ID}
+set -x
+cd $SLURM_SUBMIT_DIR
+source env.sh || exit 1
+
+env | sort
+
+cd $WEST_SIM_ROOT
+
+
+# PYTHON, make sure settings are correct in init_and_run.py
+python init_and_run.py &> west-${SLURM_JOBID}.log 
+
+
+# BASH, make sure init.sh is ran first
+#w_run --work-manager processes "$@" &> west-${SLURM_JOBID}.log 
