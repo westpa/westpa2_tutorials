@@ -1,4 +1,4 @@
-# Membrane permeability tutorial
+# Membrane permeability with butanol tutorial
 This tutorial is meant to demonstrate how to set up, run, and analyze a membrane permeation simulation using WESTPA.
 
 ## Tutorial files
