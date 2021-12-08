@@ -1,15 +1,12 @@
-# Basic WESTPA tutorial: Na+ Cl- association
-This tutorial is meant to introduce new users to the WESTPA software for running Weighted Ensemble (WE) simulations.
+# Membrane permeability tutorial
+This tutorial is meant to demonstrate how to set up, run, and analyze a membrane permeation simulation using WESTPA.
 
 ## Tutorial files
 
 All files necessary for completing the tutorial can be found in this directory.
-
-## Full tutorial 
-
-Find the full tutorial in the LiveComs journal article on best practices for Weighted Ensemble simulations. (Link to be added)
+An example trajectory of a full trace is also provided as trace-36-476.h5.
 
 ## Authors
 
-* **Anthony Bogetti** - *Primary work* - [atbogetti](https://github.com/atbogetti)
-* **Alex DeGrave** - *Preliminary work* - [ajd98](https://github.com/ajd98)
+* **She Zhang** - *Primary work* - [shz66](https://github.com/shz66)
+* **David LeBard** - *Primary work* - [dnlebard](https://github.com/dnlebard)
