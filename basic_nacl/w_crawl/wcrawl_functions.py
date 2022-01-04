@@ -101,6 +101,9 @@ class IterationProcessor(object):
             with tarfile.open(fileobj=d, mode='r:gz') as t:
                 t.extractall(path=self.parent_pattern.format(n_iter=n_iter,n_seg=iseg))
         
+            # The following is necessary for versions of h5py>3.3
+            h5.close()
+
             parent_traj = mdtraj.load(self.parent_pattern.format(n_iter=n_iter,n_seg=iseg)+"/parent.xml", top=self.topfile)
             iter_traj = mdtraj.load(self.h5traj_pattern.format(n_iter=n_iter,n_seg=iseg), top=self.topfile)
             all_traj = mdtraj.join(parent_traj, iter_traj)
