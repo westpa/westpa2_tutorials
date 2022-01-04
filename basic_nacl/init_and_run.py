@@ -33,7 +33,7 @@ if __name__ == "__main__":
     args = Params()
     args.rcfile = 'west.cfg'
     args.verbosity = 'verbose'
-    args.work_manager = 'processes'
+    args.work_manager = 'threads'
 
     # Update westpa.rc with these
     westpa.rc.process_args(args)
@@ -41,6 +41,7 @@ if __name__ == "__main__":
     # Initialize the simulation using the tstate and bstate files
     w_init.initialize(tstates=None, bstates=None,
                       tstate_file='tstate.file', bstate_file='bstates/bstates.txt',
+                      sstate_file='sstates/sstates.txt'.
                       segs_per_state=5, shotgun=False)
 
     # Prepare work manager
