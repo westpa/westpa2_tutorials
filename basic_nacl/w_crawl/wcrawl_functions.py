@@ -28,6 +28,7 @@ class IterationProcessor(object):
     h5iter_pattern = 'iterations/iter_{n_iter:08d}'
     h5traj_pattern = 'traj_segs/iter_{n_iter:06d}.h5'
     parent_pattern = 'traj_segs/parent_{n_iter:06d}{n_seg:06d}'
+    start_pattern = 'sbstates/{start_ref}/basis.xml'
 
     def __init__(self):
         '''
@@ -85,26 +86,36 @@ class IterationProcessor(object):
             h5file = h5py.File("west.h5", "r")
             parent_seg_arr = h5file[self.h5iter_pattern.format(n_iter=n_iter)]["seg_index"]["parent_id"]
             bstate_id_arr = h5file["ibstates/0/istate_index"]["basis_state_id"]
-                                                                                                         
+
             if int(parent_seg_arr[iseg]) < 0:
                 parent_seg = int(parent_seg_arr[iseg])*-1
                 parent_id = bstate_id_arr[parent_seg]
             else:
                 parent_id = int(parent_seg_arr[iseg])
-        
+            
             h5 = h5io.WESTIterationFile(self.h5traj_pattern.format(n_iter=n_iter-1), "r")
             segment = Segment(seg_id=parent_id)
-            h5.read_restart(segment)
-            data = segment.data['iterh5/restart']
+            
+            try:
+                h5.read_restart(segment)
+                data = segment.data['iterh5/restart']
+                d =io.BytesIO(data[:-1])
+                with tarfile.open(fileobj=d, mode='r:gz') as t:
+                    t.extractall(path=self.parent_pattern.format(n_iter=n_iter,n_seg=iseg))
+
+                parent_file = self.parent_pattern.format(n_iter=n_iter,n_seg=iseg)+"/parent.xml"
+            except ValueError as e:
+                if segment.n_iter == 0:
+                    start_ref = h5file['ibstates/0/istate_index/basis_auxref'][iseg]
+                    parent_file = self.start_pattern.format(start_ref=start_ref)
+                else:
+                    print(e.message, e.args)
         
-            d =io.BytesIO(data[:-1])
-            with tarfile.open(fileobj=d, mode='r:gz') as t:
-                t.extractall(path=self.parent_pattern.format(n_iter=n_iter,n_seg=iseg))
-        
+       
             # The following is necessary for versions of h5py>3.3
             h5.close()
-
-            parent_traj = mdtraj.load(self.parent_pattern.format(n_iter=n_iter,n_seg=iseg)+"/parent.xml", top=self.topfile)
+            
+            parent_traj = mdtraj.load(parent_file, top=self.topfile)
             iter_traj = mdtraj.load(self.h5traj_pattern.format(n_iter=n_iter,n_seg=iseg), top=self.topfile)
             all_traj = mdtraj.join(parent_traj, iter_traj)
             #print(iter_traj)
