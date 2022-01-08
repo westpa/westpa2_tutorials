@@ -25,10 +25,9 @@ if __name__ == "__main__":
         os.mkdir(i)
     
     # Set some parameters that WESTPA needs to set simulation state.
-    args = Namespace()
-    args.rcfile = 'west.cfg'
-    args.verbosity = 'verbose'
-    args.work_manager = 'threads'
+    args = Namespace(rcfile='west.cfg',
+                     verbosity='verbose',
+                     work_manager='threads')
 
     # Update westpa.rc with these
     westpa.rc.process_args(args)
