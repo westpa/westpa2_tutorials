@@ -1,5 +1,5 @@
-# Basic WESTPA tutorial: Na+ Cl- association
-This tutorial is meant to introduce new users to the WESTPA software for running Weighted Ensemble (WE) simulations.
+# Creating "binless" resampling schemes: Na+/Cl- association simulations
+This tutorial is meant to introduce advanced techniques when using WESTPA software for running Weighted Ensemble (WE) simulations.
 
 ## Tutorial files
 
@@ -11,5 +11,5 @@ Find the full tutorial in the LiveComs journal article on best practices for Wei
 
 ## Authors
 
+* **Jeremy Leung** - *Primary work* - [jeremyleung521](https://github.com/jeremyleung521)
 * **Anthony Bogetti** - *Primary work* - [atbogetti](https://github.com/atbogetti)
-* **Alex DeGrave** - *Preliminary work* - [ajd98](https://github.com/ajd98)
