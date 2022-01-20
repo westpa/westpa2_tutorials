@@ -1,6 +1,16 @@
+"""
+This script provides a convinient way to extract the full trace of
+the top-weighted walker. Run the following command in the project
+folder:
+
+python analysis.py
+
+See analysis.ipynb for detail.
+"""
+
 from westpa.analysis import Run, HDF5MDTrajectory
 
-with Run.open('west.h5') as run:
+with Run.open('/scr/permeability/westpa_tutorials/membrane_permeability/west.h5') as run:
     topweight = None
     topwalker = None
 
