@@ -10,7 +10,7 @@ See analysis.ipynb for detail.
 
 from westpa.analysis import Run, HDF5MDTrajectory
 
-with Run.open('/scr/permeability/westpa_tutorials/membrane_permeability/west.h5') as run:
+with Run.open('west.h5') as run:
     topweight = None
     topwalker = None
 
