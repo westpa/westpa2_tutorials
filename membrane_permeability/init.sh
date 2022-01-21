@@ -11,6 +11,8 @@ mkdir   seg_logs traj_segs istates
 BSTATE_ARGS="--bstate-file $WEST_SIM_ROOT/bstates/bstates.txt"
 TSTATE_ARGS="--tstate-file $WEST_SIM_ROOT/tstate.file"
 
+python $WEST_SIM_ROOT/common_files/init_system.py
+
 # Run w_init
 w_init \
   $BSTATE_ARGS \
