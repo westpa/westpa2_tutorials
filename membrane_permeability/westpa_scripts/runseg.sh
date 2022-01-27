@@ -5,6 +5,10 @@ if [ -n "$SEG_DEBUG" ] ; then
   env | sort
 fi
 
+N_GPU=2  # Change as necessary
+actual_gid=$((WM_PROCESS_INDEX % N_GPU))
+export CUDA_VISIBLE_DEVICES=$actual_gid
+
 # Run the dynamics with OpenMM
 python $WEST_SIM_ROOT/common_files/memb_prod.py
 
