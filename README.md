@@ -8,36 +8,28 @@ classification.
 
 If you're interested in WESTPA 2.0, see our [WESTPA Developer's Guide](https://github.com/westpa/westpa/wiki/WESTPA-Developer's-Guide).
 
-## Main Tutorials
-### Na+/Cl- association  simulations
+## Advanced Tutorials
+### Creating “Binless” Resampling Schemes: Na+/Cl- Association Simulations
 
 * 
 
-### Simulations of membrane permeability with butanol
+### Simulations of membrane permeation by butanol
 
 * 
 
-### Simulations of ms protein folding involving NTL9
+### Simulations of Millisecond NTL9 Protein Folding
 
 * 
 
-## Analysis Tutorials
-### Application of the MAB scheme to membrane permeability simulations
+### Using the westpa.analysis API and estimating rate constants
 
 * 
 
-### Application of the RED scheme for rate-constant estimation for membrane permeability
+### Simulations of alanine dipeptide using WESTPA/M-WEM
 
 *
 
-### Calculating the distribution of first passage times
+### Systems biology simulations using the WESTPA/BioNetGen plugin
 
 *
 
-### Application of the PHAT analysis of pathways
-
-*
-
-### Systems biology simulation using WESTPA/BioNetGen
-
-*
