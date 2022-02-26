@@ -1,8 +1,8 @@
 import h5py
 import numpy
 
-file1 = h5py.File("crawl.h5")
-file2 = h5py.File("west.h5")
+file1 = h5py.File("crawl.h5", "r")
+file2 = h5py.File("west.h5", "a")
 
 for i in range(1,1001):
     f1string = 'iterations/iter_'+str(i).zfill(8)+'/example_data'
