@@ -34,8 +34,7 @@ if __name__ == "__main__":
 
     # Initialize the simulation using the tstate and bstate files
     w_init.initialize(tstates=None, bstates=None,
-                      tstate_file='tstate.file', bstate_file='sbstates/bstates.txt',
-                      sstate_file='sbstates/sstates.txt',
+                      tstate_file='tstate.file', bstate_file='bstates/bstates.txt',
                       segs_per_state=5, shotgun=False)
 
     # Prepare work manager

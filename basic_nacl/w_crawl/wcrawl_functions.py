@@ -28,7 +28,7 @@ class IterationProcessor(object):
     h5iter_pattern = 'iterations/iter_{n_iter:08d}'
     h5traj_pattern = 'traj_segs/iter_{n_iter:06d}.h5'
     parent_pattern = 'traj_segs/parent_{n_iter:06d}{n_seg:06d}'
-    start_pattern = 'sbstates/{auxref}/basis.xml'
+    start_pattern = 'bstates/{auxref}/basis.xml'
 
     def __init__(self):
         '''
