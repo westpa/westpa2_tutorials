@@ -26,5 +26,5 @@ cd $WEST_SIM_ROOT
 python init_and_run.py &> west-${SLURM_JOBID}.log 
 
 
-# BASH, make sure init.sh is ran first
+# BASH, make sure init.sh is executed first
 #w_run --work-manager processes "$@" &> west-${SLURM_JOBID}.log 
