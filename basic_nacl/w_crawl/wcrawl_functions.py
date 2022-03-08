@@ -167,7 +167,7 @@ class Crawler(WESTPACrawler):
         Create an HDF5 file for saving the data.  Change the file path to
         a location that is available to you. 
         '''
-        self.output_file = h5io.WESTPAH5File('./example.h5', 'w')
+        self.output_file = h5io.WESTPAH5File('./crawl.h5', 'w')
         h5io.stamp_iter_range(self.output_file, iter_start, iter_stop)
 
     def finalize(self):
@@ -192,7 +192,7 @@ class Crawler(WESTPACrawler):
         iter_data_arr = result
         
         # Save datasets
-        dataset = iter_group.create_dataset('example', 
+        dataset = iter_group.create_dataset('example_data', 
                                             data=iter_data_arr, 
                                             scaleoffset=6, 
                                             compression=4,
