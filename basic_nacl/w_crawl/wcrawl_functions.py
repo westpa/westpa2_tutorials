@@ -133,7 +133,7 @@ class IterationProcessor(object):
             #print(all_coords.shape)
             #print(iter_data_arr.shape)
 
-            iter_data_arr[iseg] = all_coords/10
+            iter_data_arr[iseg] = all_coords*10
 
         return iter_data_arr
 
