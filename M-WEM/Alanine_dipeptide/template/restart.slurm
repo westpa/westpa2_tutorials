@@ -9,8 +9,9 @@
 #SBATCH --mem=8gb
 #SBATCH --error=slurm-%J.err ## error log file
 
-
-source /data/homezvol2/dray1/miniconda3/etc/profile.d/conda.sh
+#May need to source the conda.sh file depending on your cluster configuration
+#Please use the correct path for your conda.sh. A sample for my cluster is given below:
+#source /data/homezvol2/dray1/miniconda3/etc/profile.d/conda.sh
 
 
 # Make sure environment is set
@@ -19,8 +20,7 @@ source env.sh
 
 # Clean up
 mv west.log west.log.old 
-rm binbounds.txt
 
 # Run unrestrained dynamics
-$WEST_ROOT/bin/w_run -r west.cfg --work-manager processes --n-workers 1 "$@" &> west.log
+w_run -r west.cfg --work-manager processes --n-workers 1 "$@" &> west.log
 

@@ -33,8 +33,7 @@ MD simulation package
 * colvars: https://colvars.github.io/colvars-refman-namd/colvars-refman-namd.html
 
 ### Relevant pre-print ###
-"Markovian Weighted Ensemble Milestoning (M-WEM): Long-time Kinetics from Short Trajectories" Dhiman Ray, Sharon E. Stone, Ioan Andricioaei, BioRxiv, doi: https://doi.org/10.1101/2021.06.26.450057
-
+"Markovian Weighted Ensemble Milestoning (M-WEM): Long-time Kinetics from Short Trajectories" Dhiman Ray, Sharon E. Stone, Ioan Andricioaei, J. Chem. Theory Comput. 2022, 18, 1, 79–95. doi: https://doi.org/10.1021/acs.jctc.1c00803
 
 ## Description
 This tutotorial covers M-WEM simulation for the gas phase Alanine dipeptide system described in the paper above.  

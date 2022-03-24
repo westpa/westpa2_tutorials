@@ -9,19 +9,20 @@
 #SBATCH --mem=8gb
 #SBATCH --error=slurm-%J.err ## error log file
 
+#May need to source the conda.sh file depending on your cluster configuration
+#Please use the correct path for your conda.sh. A sample for my cluster is given below:
+#source /data/homezvol2/dray1/miniconda3/etc/profile.d/conda.sh
 
-source /data/homezvol2/dray1/miniconda3/etc/profile.d/conda.sh
+# Make sure environment is set
+source env.sh
 
 #equilibrate
 cd equilibration
-/data/homezvol2/dray1/NAMD_2.13_Linux-x86_64-multicore/namd2 +p 4 equilibration.conf > equilibration.log
-#*** Make sure to provide the correct path to NAMD in your cluster in above line ***#
+$NAMD_PATH/namd2 +p 4 equilibration.conf > equilibration.log
 
 python calc_rxn_coor.py > distance.dat
 cd ..
 
-# Make sure environment is set
-source env.sh
 
 
 # Clean up from previous/ failed runs
@@ -41,7 +42,7 @@ BSTATE_ARGS="--bstate-file $WEST_SIM_ROOT/bstates/bstates.txt"
 #TSTATE_ARGS="--tstate-file $WEST_SIM_ROOT/tstate.file"
 
 # Run w_init
-$WEST_ROOT/bin/w_init $BSTATE_ARGS  $TSTATE_ARGS  --segs-per-state 4  --work-manager=threads "$@"
+w_init $BSTATE_ARGS  --segs-per-state 4  --work-manager=threads "$@"
 
 
 # Clean up
@@ -49,5 +50,5 @@ rm -f west.log
 
 
 # Run unrestrained dynamics
-$WEST_ROOT/bin/w_run -r west.cfg --work-manager processes --n-workers 4 "$@" &> west.log
+w_run -r west.cfg --work-manager processes --n-workers 1 "$@" &> west.log
 
