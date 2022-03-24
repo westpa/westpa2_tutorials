@@ -1,16 +1,15 @@
 #!/bin/bash
 
+# Make sure environment is set
+source env.sh
 
 #equilibrate
 cd equilibration
-#/home/dhiman/NAMD_2.14_Linux-x86_64-multicore/namd2 +p 4 equilibration.conf > equilibration.log
+$NAMD_PATH/namd2 +p 4 equilibration.conf > equilibration.log
 #*** Make sure to provide the correct path to NAMD in your cluster in above line ***#
 
 python calc_rxn_coor.py > progress_coordinate.dat
 cd ..
-
-# Make sure environment is set
-source env.sh
 
 
 # Clean up from previous/ failed runs
@@ -30,7 +29,7 @@ BSTATE_ARGS="--bstate-file $WEST_SIM_ROOT/bstates/bstates.txt"
 #TSTATE_ARGS="--tstate-file $WEST_SIM_ROOT/tstate.file"
 
 # Run w_init
-w_init $BSTATE_ARGS  $TSTATE_ARGS  --segs-per-state 4  --work-manager=threads "$@"
+w_init $BSTATE_ARGS --segs-per-state 4  --work-manager=threads "$@"
 
 
 # Clean up
@@ -38,5 +37,5 @@ rm -f west.log
 
 
 # Run dynamics
-w_run -r west.cfg --work-manager processes --n-workers 1 "$@" &> west.log
+w_run -r west.cfg --work-manager processes --n-workers 4 "$@" &> west.log
 
