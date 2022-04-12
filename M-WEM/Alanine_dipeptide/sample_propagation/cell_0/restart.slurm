@@ -22,5 +22,5 @@ mv west.log west.log.old
 rm binbounds.txt
 
 # Run unrestrained dynamics
-$WEST_ROOT/bin/w_run -r west.cfg --work-manager processes --n-workers 1 "$@" &> west.log
+w_run -r west.cfg --work-manager processes --n-workers 1 "$@" &> west.log
 

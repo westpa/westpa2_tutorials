@@ -28,7 +28,7 @@ class IterationProcessor(object):
     h5iter_pattern = 'iterations/iter_{n_iter:08d}'
     h5traj_pattern = 'traj_segs/iter_{n_iter:06d}.h5'
     parent_pattern = 'traj_segs/parent_{n_iter:06d}{n_seg:06d}'
-    start_pattern = 'sbstates/{auxref}/basis.xml'
+    start_pattern = 'bstates/{auxref}/basis.xml'
 
     def __init__(self):
         '''
@@ -133,7 +133,7 @@ class IterationProcessor(object):
             #print(all_coords.shape)
             #print(iter_data_arr.shape)
 
-            iter_data_arr[iseg] = all_coords/10
+            iter_data_arr[iseg] = all_coords*10
 
         return iter_data_arr
 
@@ -167,7 +167,7 @@ class Crawler(WESTPACrawler):
         Create an HDF5 file for saving the data.  Change the file path to
         a location that is available to you. 
         '''
-        self.output_file = h5io.WESTPAH5File('./example.h5', 'w')
+        self.output_file = h5io.WESTPAH5File('./crawl.h5', 'w')
         h5io.stamp_iter_range(self.output_file, iter_start, iter_stop)
 
     def finalize(self):
@@ -192,7 +192,7 @@ class Crawler(WESTPACrawler):
         iter_data_arr = result
         
         # Save datasets
-        dataset = iter_group.create_dataset('example', 
+        dataset = iter_group.create_dataset('example_data', 
                                             data=iter_data_arr, 
                                             scaleoffset=6, 
                                             compression=4,
