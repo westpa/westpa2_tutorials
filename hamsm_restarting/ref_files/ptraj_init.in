@@ -1,0 +1,4 @@
+trajin parent.rst7
+reference ref_files/reference.pdb 
+rms reference out rmsd.temp @CA
+
