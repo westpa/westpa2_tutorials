@@ -1,5 +1,5 @@
-# Membrane permeability with butanol tutorial
-This tutorial is meant to demonstrate how to set up, run, and analyze a membrane permeation simulation using WESTPA.
+# Tutorial 3.2: Adaptive Binning and HDF5 Storage of Coordinates: 1-Butanol Membrane Permation
+This tutorial is meant to demonstrate how to set up, run, and analyze a membrane permeation simulation using WESTPA and the minimal adaptive binning (MAB) scheme.
 
 ## Tutorial files
 
