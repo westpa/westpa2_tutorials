@@ -6,10 +6,10 @@ installed by the user and are not provided herein. The following is a list of th
 
 If you are interested in WESTPA 2.0, see our [WESTPA Developer's Guide](https://github.com/westpa/westpa/wiki/WESTPA-Developer's-Guide).
 ## Advanced Tutorials
-* Creating “Binless” Resampling Schemes: Na+/Cl- Association Simulations
-* Adaptive Binning and HDF5 Storage of Coordinates: 1-Butanol Membrane Permeation
-* Analysis and Restarting with haMSMs: NTL9 Protein Folding
-* Custom Analysis Routines and RED-Scheme Rate Constants 
-* M-WEM Simulations: Alanine Dipeptide
-* WESTPA/BNG plugin: Systems biology simulations
+* 3.1 Creating “Binless” Resampling Schemes: Na+/Cl- Association Simulations
+* 3.2 Adaptive Binning and HDF5 Storage of Coordinates: 1-Butanol Membrane Permeation
+* 3.3 Analysis and Restarting with haMSMs: NTL9 Protein Folding
+* 3.4 Custom Analysis Routines and RED-Scheme Rate Constants 
+* 3.5 M-WEM Simulations: Alanine Dipeptide
+* 3.6 WESTPA/BNG plugin: Systems biology simulations
 
