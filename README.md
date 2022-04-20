@@ -7,29 +7,11 @@ installed by the user and are not provided herein. The following is a list of al
 classification.
 
 If you're interested in WESTPA 2.0, see our [WESTPA Developer's Guide](https://github.com/westpa/westpa/wiki/WESTPA-Developer's-Guide).
-
 ## Advanced Tutorials
-### Creating “Binless” Resampling Schemes: Na+/Cl- Association Simulations
-
-* 
-
-### Simulations of membrane permeation by butanol
-
-* 
-
-### Simulations of Millisecond NTL9 Protein Folding
-
-* 
-
-### Using the westpa.analysis API and estimating rate constants
-
-* 
-
-### Simulations of alanine dipeptide using WESTPA/M-WEM
-
-*
-
-### Systems biology simulations using the WESTPA/BioNetGen plugin
-
-*
+* Creating “Binless” Resampling Schemes: Na+/Cl- Association Simulations
+* Simulations of membrane permeation by butanol
+* Analysis and Restarting with haMSMs: NTL9 Protein Folding
+* Creating Custom Analysis Routines and Calculating Rate Constants 
+* M-WEM Simulations: Alanine Dipeptide
+* WESTPA/BNG plugin: Systems biology simulations
 
