@@ -11,5 +11,5 @@ If you are interested in WESTPA 2.0, see our [WESTPA Developer's Guide](https://
 ### 3.3 Analysis and Restarting with haMSMs: NTL9 Protein Folding
 ### 3.4 Custom Analysis Routines and RED-Scheme Rate Constants 
 ### 3.5 M-WEM Simulations: Alanine Dipeptide
-### 3.6 WESTPA/BNG plugin: Systems biology simulations
+### 3.6 WESTPA/BNG Plugin: Systems Biology Simulations
 
