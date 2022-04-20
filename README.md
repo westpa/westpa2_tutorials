@@ -9,7 +9,7 @@ classification.
 If you're interested in WESTPA 2.0, see our [WESTPA Developer's Guide](https://github.com/westpa/westpa/wiki/WESTPA-Developer's-Guide).
 ## Advanced Tutorials
 * Creating “Binless” Resampling Schemes: Na+/Cl- Association Simulations
-* Adaptive Binning and HDF5 Framework: 1-Butanol Membrane Permeation
+* Adaptive Binning and HDF5 Storage of Coordinates: 1-Butanol Membrane Permeation
 * Analysis and Restarting with haMSMs: NTL9 Protein Folding
 * Creating Custom Analysis Routines and Calculating Rate Constants 
 * M-WEM Simulations: Alanine Dipeptide
