@@ -9,15 +9,16 @@ cd $WEST_SIM_ROOT
 mkdir -pv $WEST_CURRENT_SEG_DATA_REF
 cd $WEST_CURRENT_SEG_DATA_REF
 
-ln -sv $WEST_SIM_ROOT/common_files/bstate.pdb .
+sed "s/RAND/$WEST_RAND16/g" $WEST_SIM_ROOT/common_files/nacl_prod.py > nacl_prod.py
 
-if [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_CONTINUES" ]; then
-  sed "s/RAND/$WEST_RAND16/g" $WEST_SIM_ROOT/common_files/nacl_prod.py > nacl_prod.py
-  ln -sv $WEST_PARENT_DATA_REF/seg.xml ./parent.xml
-elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
-  sed "s/RAND/$WEST_RAND16/g" $WEST_SIM_ROOT/common_files/nacl_prod.py > nacl_prod.py
-  ln -sv $WEST_PARENT_DATA_REF/basis.xml ./parent.xml
-fi
+## uncomment the following code when HDF5 framework is off ##
+# ln -sv $WEST_SIM_ROOT/common_files/bstate.pdb .
+
+# if [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_CONTINUES" ]; then
+#   ln -sv $WEST_PARENT_DATA_REF/seg.xml ./parent.xml
+# elif [ "$WEST_CURRENT_SEG_INITPOINT_TYPE" = "SEG_INITPOINT_NEWTRAJ" ]; then
+#   ln -sv $WEST_PARENT_DATA_REF/basis.xml ./parent.xml
+# fi
 
 # Run the dynamics with OpenMM
 python nacl_prod.py
