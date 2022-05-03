@@ -1,0 +1,4 @@
+parm ntl9.prmtop
+trajin parent.rst7
+trajin seg.rst7
+surf out sa.dat
