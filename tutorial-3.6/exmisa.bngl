@@ -1,0 +1,49 @@
+begin model
+begin parameters
+    g0 4.0
+    g1 18.0
+    k 1.0
+    ha 1E-5
+    hr 1E-1
+    fa 1E-5
+    fr 1.0
+end parameters
+begin molecule types
+    A()
+    B()
+    GeneA_00()
+    GeneA_01()
+    GeneA_10() 
+    GeneB_00()
+    GeneB_01()
+    GeneB_10()
+end molecule types
+begin species #initial molecule count
+    GeneA_00() 1
+    GeneA_01() 0
+    GeneA_10() 0
+    GeneB_00() 1
+    GeneB_01() 0
+    GeneB_10() 0
+    A() 4
+    B() 18
+end species
+begin observables
+    Molecules Atot A()
+    Molecules Btot B()
+end observables
+begin reaction rules
+    GeneA_00() + A() + A() <-> GeneA_10() ha, fa
+    GeneA_00() + B() + B() <-> GeneA_01() hr, fr
+    GeneA_00() -> GeneA_00() + A() g0
+    GeneA_01() -> GeneA_01() + A() g0
+    GeneA_10() -> GeneA_10() + A() g1
+    GeneB_00() + A() + A() <-> GeneB_01() hr, fr
+    GeneB_00() + B() + B() <-> GeneB_10() ha, fa
+    GeneB_00() -> GeneB_00() + B() g0
+    GeneB_01() -> GeneB_01() + B() g0
+    GeneB_10() -> GeneB_10() + B() g1
+    A() -> 0 k
+    B() -> 0 k
+end reaction rules
+end model
