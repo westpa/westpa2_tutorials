@@ -1,0 +1,11 @@
+name: advanced_nacl
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - openmm
+  - scikit-learn
+  - jupyterlab
+  - ipympl
+  - nglview
+  - matplotlib 
