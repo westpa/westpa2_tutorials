@@ -37,4 +37,3 @@ cp seg.log $WEST_LOG_RETURN
 
 # Clean up
 rm -f dist.dat nacl_prod.py
-rm ./*
