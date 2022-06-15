@@ -1,11 +1,10 @@
-from simtk.openmm import (
+from openmm import (
     XmlSerializer,
     LangevinIntegrator,
     Platform,
 )
-from simtk.unit import kelvin, picosecond
-from simtk.openmm import LangevinIntegrator, Platform
-from simtk.openmm.app import (
+from openmm.unit import kelvin, picosecond
+from openmm.app import (
     StateDataReporter,
     Simulation,
     PDBFile
