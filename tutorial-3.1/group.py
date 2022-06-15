@@ -6,7 +6,7 @@ import numpy
 log = logging.getLogger(__name__)
 log.debug('loading module %r' % __name__)
 
-def kmeans(coords, n_clusters, splitting):
+def kmeans(coords, n_clusters, splitting, **kwargs):
     X = numpy.array(coords)
     if X.shape[0] == 1:
         X = X.reshape(-1,1)
