@@ -3,8 +3,8 @@ channels:
  - conda-forge
  - omnia
 dependencies:
- - mdtraj==1.9.5
- - pip==21.1.2
+ - mdtraj>=1.9.5
+ - pip>=21.1.2
  - openmmforcefields
  - openff-forcefields>=2.0.0
  - numpy>=1.16.0
@@ -12,4 +12,4 @@ dependencies:
  - scipy>=0.19.1
  - cudatoolkit==10.0.130
  - Cython>=0.29.16
- - openmm==7.5
+ - openmm>=7.6
