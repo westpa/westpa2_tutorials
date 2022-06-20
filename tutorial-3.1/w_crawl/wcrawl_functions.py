@@ -98,7 +98,7 @@ class IterationProcessor(object):
             # here, the parent_traj is used to get coordinates, but you could
             # do any mdtraj or mdanalysis-related calculation here once you
             # have the trajectory selected.
-            parent_coord_array = parent_traj.xyz[-1,:2,:] # the :1 index just gets the coordinates for Na+ and Cl-
+            parent_coord_array = parent_traj.xyz[-1,:2,:] # the :2 index just gets the coordinates for Na+ and Cl-
 
             # don't change the following block
             iter_h5_filepath = "traj_segs/iter_"+str(int(n_iter)).zfill(6)+".h5"
@@ -108,7 +108,7 @@ class IterationProcessor(object):
 
             # this will be the same as above but run on the "main"
             # trajectory frames instead of the parents.
-            iter_coord_array = iter_traj.xyz[:,:2,:] # the :1 index just gets the coordinates for Na+ and Cl-
+            iter_coord_array = iter_traj.xyz[:,:2,:] # the :2 index just gets the coordinates for Na+ and Cl-
 
             # combine the parent and main iter trajectory datasets, not that I don't
             # concatenate the trajectories themeselves, but you could technically do that.
