@@ -1,5 +1,5 @@
-from simtk.openmm import app, XmlSerializer, MonteCarloMembraneBarostat
-from simtk.unit import kelvin, bar, nanometer
+from openmm import app, XmlSerializer, MonteCarloMembraneBarostat
+from openmm.unit import kelvin, bar, nanometer
 from openmmforcefields.generators import SystemGenerator
 from openff.toolkit.topology import Molecule
 
