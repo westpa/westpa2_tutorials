@@ -17,6 +17,6 @@ simulation.context.setPositions(pdb.positions)
 
 simulation.loadState('parent.xml')
 simulation.reporters.append(StateDataReporter('seg.log', 100, step=True, potentialEnergy=True, kineticEnergy=True, temperature=True)) 
-simulation.reporters.append(DCDReporter('seg.dcd', 20)) 
+simulation.reporters.append(DCDReporter('seg.dcd', 500)) 
 simulation.step(1000)
 simulation.saveState('seg.xml')

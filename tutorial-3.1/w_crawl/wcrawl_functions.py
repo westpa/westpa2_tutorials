@@ -22,14 +22,6 @@ class IterationProcessor(object):
     which the ``process_iter_result`` method of the ``Crawler`` class recieves 
     as the argument ``result``. 
     '''
-    # Store the location of the PDB file to be used as the topology 
-    topfile = './bstate.pdb'
-    # Define the pattern used for finding each segment's traj file
-    h5iter_pattern = 'iterations/iter_{n_iter:08d}'
-    h5traj_pattern = 'traj_segs/iter_{n_iter:06d}.h5'
-    parent_pattern = 'traj_segs/parent_{n_iter:06d}{n_seg:06d}'
-    start_pattern = 'bstates/{auxref}/basis.xml'
-
     def __init__(self):
         '''
         Initialize the IterationProcessor class
@@ -59,81 +51,76 @@ class IterationProcessor(object):
           dimension 1 indexes the frame number, and dimension 2 indexes the 
           x/y/z coordinate of the center of mass.
         '''
-        # Find the number of segments in the iteration at hand
-        print("starting",n_iter)
+        # find the number of segments in the iteration at hand
+        print("starting iteration", n_iter)
         num_segs = iter_group['seg_index'].shape[0]
+
         parent_iter = n_iter-1
 
-        frames_per_iter = 50
-        num_atoms = 4010
-        data_dims = 3
+        # change the following to match your system, not that if you only need a single
+        # value per frame, you don't need the num_atoms index and can instead just do:
+        #
+        #     iter_data_arr = numpy.zeros((num_segs, frames_per_iter, data_dims))
+        #
+        # the following is more of a special case for coordinate extraction
 
-#        h5file = h5py.File("west.h5", "r")
-#        parent_seg_arr = h5file[self.h5iter_pattern.format(n_iter=n_iter)]["seg_index"]["parent_id"]
-#        bstate_id_arr = h5file["ibstates/0/istate_index"]["basis_state_id"]
-#
-#        iter_coord_arr = numpy.zeros([num_segs, frames_per_iter, num_atoms, 3])
-#        parent_coord_arr = numpy.zeros([num_segs, 1, num_atoms, 3])
-        
-        # Create an array to hold your data
-        iter_data_arr = numpy.zeros((num_segs, frames_per_iter+1, num_atoms, data_dims))
+        frames_per_iter = 3 # remember this is +1 since the bstate is always included first
+        num_atoms = 2 # we'll just save the coordinates for Na+ and Cl-
+        data_dims = 3 # since each atom has an x, y and z coordinate
 
-        # Iterate over each segment
+        # create an array to hold your data
+        iter_data_arr = numpy.zeros((num_segs, frames_per_iter, num_atoms, data_dims))
+
+        # iterate over each segment
         for iseg in range(num_segs):
-            print("  analyzing segment:",iseg)
+            print("analyzing segment:", iseg)
 
-            #Get the parent xml file (this is the hardest part)
+            # find out which segment from parent_iter is the parent;
+            # in general, don't change anything in this section.
             h5file = h5py.File("west.h5", "r")
-            parent_seg_arr = h5file[self.h5iter_pattern.format(n_iter=n_iter)]["seg_index"]["parent_id"]
-            bstate_id_arr = h5file["ibstates/0/istate_index"]["basis_state_id"]
-            istate_type_arr = h5file["ibstates/0/istate_index"]["istate_type"]
+            parent_seg_arr = iter_group['seg_index']['parent_id']
+            bstate_id_arr = h5file['ibstates/0/istate_index']['basis_state_id']
+            istate_type_arr = h5file['ibstates/0/istate_index']['istate_type']
 
             if int(parent_seg_arr[iseg]) < 0:
                 parent_seg = int(parent_seg_arr[iseg])*-1
                 parent_id = bstate_id_arr[parent_seg]
+                parent_iter = 0 # this means that the parent is a bstate
             else:
                 parent_id = int(parent_seg_arr[iseg])
             
-            h5 = h5io.WESTIterationFile(self.h5traj_pattern.format(n_iter=n_iter-1), "r")
-            segment = Segment(n_iter=n_iter-1, seg_id=parent_id)
+            parent_iter_h5_filepath = "traj_segs/iter_"+str(int(parent_iter)).zfill(6)+".h5"
+            parent_pointer = h5py.File(parent_iter_h5_filepath)['pointer'][:,1]
+            parent_where = numpy.where(parent_pointer == parent_id)
+            parent_traj = mdtraj.load(parent_iter_h5_filepath)[parent_where]
 
-            try:
-                h5.read_restart(segment)
-                data = segment.data['iterh5/restart']
-                d =io.BytesIO(data[:-1])
-                with tarfile.open(fileobj=d, mode='r:gz') as t:
-                    t.extractall(path=self.parent_pattern.format(n_iter=n_iter,n_seg=iseg))
-                
-                parent_file = self.parent_pattern.format(n_iter=n_iter,n_seg=iseg)+"/parent.xml"
-            except ValueError as e:
-                if segment.n_iter == 0:
-                    print('Falling back to non-HDF5 files: ' + str(e))
-                    if istate_type_arr[iseg] == 4:
-                        start_ref = h5io.tostr(h5file['ibstates/0/istate_index']['basis_auxref'][iseg])
-                        parent_file = self.start_pattern.format(auxref=start_ref)
-                    else:
-                        # Falling back to basis state files
-                        basis_ref = h5io.tostr(h5file['ibstates/0/bstate_index']['auxref'][bstate_id_arr[iseg]])
-                        parent_file = self.start_pattern.format(auxref=basis_ref)
-                       
+            # this is where you'll want to change things to suit your analysis,
+            # here, the parent_traj is used to get coordinates, but you could
+            # do any mdtraj or mdanalysis-related calculation here once you
+            # have the trajectory selected.
+            parent_coord_array = parent_traj.xyz[-1,:2,:] # the :1 index just gets the coordinates for Na+ and Cl-
 
-                else:
-                    print(str(e))
-        
-       
-            # The following is necessary for versions of h5py>3.3
-            h5.close()
-            
-            parent_traj = mdtraj.load(parent_file, top=self.topfile)
-            iter_traj = mdtraj.load(self.h5traj_pattern.format(n_iter=n_iter,n_seg=iseg), top=self.topfile)
-            all_traj = mdtraj.join(parent_traj, iter_traj)
-            #print(iter_traj)
+            # don't change the following block
+            iter_h5_filepath = "traj_segs/iter_"+str(int(n_iter)).zfill(6)+".h5"
+            pointer = h5py.File(iter_h5_filepath)['pointer'][:,1]
+            where = numpy.where(pointer == iseg)
+            iter_traj = mdtraj.load(iter_h5_filepath)[where]
 
-            all_coords = all_traj.xyz[:,:,:]
-            #print(all_coords.shape)
-            #print(iter_data_arr.shape)
+            # this will be the same as above but run on the "main"
+            # trajectory frames instead of the parents.
+            iter_coord_array = iter_traj.xyz[:,:2,:] # the :1 index just gets the coordinates for Na+ and Cl-
 
-            iter_data_arr[iseg] = all_coords*10
+            # combine the parent and main iter trajectory datasets, not that I don't
+            # concatenate the trajectories themeselves, but you could technically do that.
+            # (I don't do that here becasue I think this is safer...)
+            coord_array = numpy.concatenate((parent_coord_array.reshape(1,2,3), iter_coord_array), axis=0) 
+ 
+            coord_array *= 10 # convert coordinates from nm to angstroms
+
+            # this will loop through iter_data_arr and put our data where it needs to be,
+            # you shouldn't need to change this.
+            for num, val in enumerate(coord_array):
+                iter_data_arr[iseg, num] = val
 
         return iter_data_arr
 
@@ -167,7 +154,8 @@ class Crawler(WESTPACrawler):
         Create an HDF5 file for saving the data.  Change the file path to
         a location that is available to you. 
         '''
-        self.output_file = h5io.WESTPAH5File('./crawl.h5', 'w')
+        # name your new hdf5 data file here
+        self.output_file = h5io.WESTPAH5File('./coord.h5', 'w')
         h5io.stamp_iter_range(self.output_file, iter_start, iter_stop)
 
     def finalize(self):
@@ -191,8 +179,8 @@ class Crawler(WESTPACrawler):
 
         iter_data_arr = result
         
-        # Save datasets
-        dataset = iter_group.create_dataset('example_data', 
+        # name your new hdf5 dataset here
+        dataset = iter_group.create_dataset('coord', 
                                             data=iter_data_arr, 
                                             scaleoffset=6, 
                                             compression=4,
