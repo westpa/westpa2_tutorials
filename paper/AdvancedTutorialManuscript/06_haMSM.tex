@@ -16,7 +16,7 @@ Specific objectives are:
 
 \subsubsection{Prerequisites} The Basic and Intermediate WESTPA Tutorials \citep{bogetti_suite_2019} should be completed before running this tutorial.
 
-\textbf{Computational Requirements.} This tutorial can be completed on a computer with a single GTX1080 GPU and a 2.4GHz Xeon E5-2620 in 90 min. 
+\textbf{Computational Requirements.} This tutorial can be completed on a computer with a single NVIDIA GTX 1080 GPU and a 2.4GHz Intel Xeon E5-2620 in 90 min. 
 The WE simulation will generate \textasciitilde5 GB of data, though on a typical cluster filesystem, overhead associated with data redundancy may increase this to \textasciitilde15 GB. 
 A version of the Amber software package compatible with Amber 16 restart and topology files must be installed to propagate the dynamics and calculate the WE progress coordinate. 
 
@@ -64,10 +64,11 @@ A flatter flux profile indicates more converged weighted ensemble.
     This image can be found in restart0/plots/psuedocomm-flux\_plot\_pcoordcolor.pdf after restart is performed.}
 \end{figure}
 
-A new set of (correlated, but independent from this point onward) runs is initialized from those weighted structures. 
+A new set of runs from the resulting weighted structured are initialized. 
+These runs are correlated but independent from this point onward.
 As a technical note, when initializing the new WE simulations, these structures are used as "start states". 
 Within the WESTPA 2.0 framework, start states are a third category of state, in addition to basis states and target states. 
-Like basis states, start states are used for seeding trajectory walkers when initializing a simulation with \verb|w_init|; however, \textit{unlike} basis states, they are not used after this point and walkers reaching the target state will \textbf{not} be recycled into start states but rather only to the basis states. 
+Like basis states, start states are used for seeding trajectory walkers when initializing a simulation with \verb|w_init|; however, \textit{unlike} basis states, start states are not used after this point and walkers reaching the target state will \textbf{not} be recycled into start states but rather only to the basis states. 
 The new WE runs are executed for the number of WE iterations specified in \verb|west.cfg|, in series. 
 At this point, the model is saved, a new restart is prepared, and the process repeats from that point onward.
 
