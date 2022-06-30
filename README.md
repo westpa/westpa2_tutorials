@@ -1,4 +1,3 @@
-# UNDER CONSTRUCTION - WORK IN PROGRESS
 # Suite of WESTPA 2.0 tutorials: Supplementary information
 This collection of files is a companion to the Suite of WESTPA 2.0 tutorials manuscript soon to be submitted to [LiveCoMS](https://livecomsjournal.org/index.php/livecoms/). Each tutorial directory contains all files 
 necessary for completing that tutorial. Programs such as WESTPA, AMBER, Python etc. will need to be 
