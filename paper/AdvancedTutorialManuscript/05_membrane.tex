@@ -18,7 +18,7 @@ In addition to completing the Basic and Intermediate WESTPA Tutorials \citep{bog
 Also required is a working knowledge of the CHARMM-GUI membrane builder, PACKMOL, OpenEye Scientific’s OEChem and Omega toolkits (for system preparation only), MDTraj analysis suite, and the OpenMM 7.6 dynamics engine (for running WE). 
 
 \textbf{Computational Requirements.} The membrane permeability tutorial simulation runs best using, at minimum, a dual-GPU workstation. 
-For this tutorial, simulations were tested with a compute node containing both a Titan X (Pascal) GPU and a GTX 1080 GPU, as well as a 16-core Intel Xeon X5550 CPU running at 2.67 GHz with a total of 100 GB of system memory. 
+For this tutorial, simulations were tested with a compute node containing both a NVIDIA Titan X (Pascal) GPU and a NVIDIA GTX 1080 GPU, as well as a 16-core Intel Xeon X5550 CPU running at 2.67 GHz with a total of 100 GB of system memory. 
 In the case a user does not have a GPU and only CPUs, switch between OpenMM's GPU and CPU platforms by changing the platform name in line 22 of \verb|memb_prod.py| to \verb|CPU| instead of \verb|CUDA|. 
 The complete tutorial simulation run length (37 iterations) required \textasciitilde4 days of continuous wall clock time on both GPUs, as well as \textasciitilde30 GB of hard disk space with the HDF5 framework and MAB options turned on.
 
@@ -36,8 +36,7 @@ Other dependencies, including NumPy and MDTraj, are installed through WESTPA 2.0
 \end{verbatim}
 
 \subsubsection{Preparing the simulation}
-The following preparation steps are already completed and the resulting files are provided so that users can begin WE simulations directly. 
-The following explanation serves to orient the reader and instruct the reader on how to prepare similar systems for simualtion with WE.
+The following preparation steps have already been completed and are presented to instruct the reader on how to prepare similar systems for WE simulation.
 
 Our system consists of a 1-palmitoyl-2-oleoyl-sn-glycero-3-phosphatidylcholine (POPC) membrane bilayer. 
 The 1-butanol-double POPC membrane bilayer system was prepared by piecing together several smaller molecular systems in the following way.
@@ -168,5 +167,5 @@ Note that this tutorial assumes that you already have a completed simulation usi
 
 \subsubsection{Conclusion}
 In this tutorial, we have illustrated the relative ease in which one may use the WESTPA 2.0 software package to perform advanced WE path sampling simulations of membrane permeation for a small molecule (butanol). 
-Using a single workstation with commodity GPU hardware, our WE simulation can generate membrane permeation events within a few days of wall-clock time. 
+Using a single workstation with two GPUs, our WE simulation can generate membrane permeation events within a few days of wall-clock time. 
 WE simulations, when using the WESTPA 2.0 HDF5 framework and MAB binning scheme, are relatively cost effective, both in terms of total compute time and disk storage.
