@@ -94,8 +94,8 @@ Remember that the \verb|test_data| auxiliary dataset does not actually exist, bu
   >>> plt.plot(xs, ys)
 \end{verbatim}
 
-One goal of the \verb|westpa.analysis| API is to simplify the retrieval of trajectory data.
-Two built-in readers are provided for retrieving MD trajectory data: (1) \verb|BasicMDTrajectory|, which handles trajectories stored in the traditional manner (without the HDF5 trajectory framework; (2) \verb|HDF5MDTrajectory|, which handles trajectories stored using the new HDF5 framework, as is done in the above \textbf{Tutorial 3.1}.
+One goal of the \verb|westpa.analysis| API is to simplify the retrieval of trajectory coordinates.
+Two built-in readers are provided for retrieving MD trajectory coordinates: (1) \verb|BasicMDTrajectory|, which handles trajectory files outputted by the dynamics engine; or (2) \verb|HDF5MDTrajectory|, which handles trajectories stored using the new HDF5 framework, as is done in the above \textbf{Tutorial 3.1 and 3.2}.
 For users requiring greater flexibility, custom trajectory readers can be implemented using the more general \verb|Trajectory| class.
 Here we provide a brief overview of both the \verb|BasicMDTrajectory| and the \verb|HDF5MDTrajectory| readers.
 The following is included only as an example, since the trajectory files required are not provided.

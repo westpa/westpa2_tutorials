@@ -112,11 +112,10 @@ An example \verb|runwe.slurm| file with commands for both methods of execution i
 We also provide a Jupyter notebook that demonstrates the steps for cleaning up, initializing, and running the WE simulation.
 
 Note that this tutorial is using the new HDF5 trajectory storage framework, which will be explained further in \textbf{Advanced Tutorial 3.2}. 
-To enable the use of the HDF5 framework in your own simulation, you may use this directory as an example. 
-The location of the trajectory h5 files will need to be specified in the \verb|west.cfg| file, and the appropriate restart and topology files will need to be copied to the correct locations in the \verb|get_pcoord.sh| and \verb|runseg.sh| files. 
-You will also need to make sure that the file extensions for any trajectory files are readable by \verb|mdtraj.load|, for example, Amber restart files must end in .ncrst to be used, which simply requires renaming. 
-Even though the HDF5 framework may be in use, traditional trajectory files are still stored in the \verb|traj_segs/| directory. 
-Feel free to delete those after every iteration in the \verb|post_iter.sh| file, which is located in the \verb|westpa_scripts/| directory.
+To enable the use of the HDF5 framework in your own simulation, you may use the current tutorials directory as an example. 
+The location of the trajectory h5 files will need to be specified in the \verb|west.cfg| file, and the appropriate restart and topology files will need to be copied to the locations specified in the \verb|get_pcoord.sh| and \verb|runseg.sh| files. 
+You will also need to make sure that the file extensions for any trajectory files are readable by \verb|mdtraj.load|, (e.g., Amber restart files must end in .ncrst) which simply requires renaming. 
+To save disk space, trajectory files outputted by the dynamics engine can be deleted after every iteration in the \verb|post_iter.sh| file, which is located in the \verb|westpa_scripts/| directory.
 
 \subsubsection{Monitoring and Analyzing the WE Simulation}
 
@@ -124,10 +123,10 @@ Feel free to delete those after every iteration in the \verb|post_iter.sh| file,
 Each WE iteration in the \verb|multi.h5| file contains all of the trajectory segments from the corresponding iterations of the individual WE simulations, all normalized to the total weight for that iteration. 
 For backwards compatibility, a version of \verb|w_multi_west| for use with previously run WESTPA 1.0 simulations (v2020.XX) has been available since version 2020.04.
 
-To use the multitool, the \verb|west.h5| file for each WE simulation you want to combine should be placed within a numbered directory starting with \verb|01/|. 
-If the simulations used a custom grouping function (such as in \verb|group.py|), you must also include that file in the top-level analysis directory. 
-Note that in the provided tutorial files, you will have to decompress the provided HDF5 files, which (after decompression) will be automatically placed in numbered folders. 
-For example, after decompression, the files will be organized as follows:
+To apply the multitool to a combination of \verb|west.h5| files, place the \verb|west.h5| file for each simulation in a numbered directory starting with \verb|01/|. 
+If all of the simulations used a custom grouping function (such as in \verb|group.py|), you must also include that file in the top-level analysis directory. 
+
+The files will be organized as follows:
 
 \begin{verbatim}
   01/
