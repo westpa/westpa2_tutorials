@@ -1,0 +1,149 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% LIVECOMS ARTICLE TEMPLATE FOR BEST PRACTICES GUIDE
+%%% ADAPTED FROM ELIFE ARTICLE TEMPLATE (8/10/2017)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% PREAMBLE
+\documentclass[9pt,tutorial]{livecoms}
+
+\usepackage{lipsum} % Required to insert dummy text
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
+\DeclareSIUnit\Molar{M}
+\usepackage[italic]{mathastext}
+%\usepackage{fixltx2e} % No longer necessary to load
+\usepackage{listings}
+\graphicspath{{figures/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% IMPORTANT USER CONFIGURATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\versionnumber}{0.1}  % you should update the minor version number in preprints and major version number of submissions.
+\newcommand{\githubrepository}{\url{https://github.com/westpa/westpa2_tutorials}}  %this should be the main github repository for this article
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{A Suite of Advanced Tutorials for the WESTPA 2.0 Rare-Events Sampling Software
+ [Article v\versionnumber]}
+
+%\author[1*]{Firstname Middlename Surname}
+%\author[1,2\authfn{1}\authfn{3}]{Firstname Middlename Familyname}
+\author[1,\authfn{1}]{Anthony T. Bogetti}
+\author[1,\authfn{1}]{Jeremy M. G. Leung}
+\author[2,\authfn{1}]{John D. Russo}
+\author[3,\authfn{1}]{She Zhang}
+\author[3,\authfn{1}]{Jeff P. Thompson}
+\author[4,\authfn{1}]{Ali S. Saglam}
+\author[5,\authfn{1}]{Dhiman Ray}
+\author[1]{Rhea C. Abraham}
+\author[4]{James R. Faeder}
+\author[5]{Ioan Andricioaei}
+\author[4]{Joshua L. Adelman}
+\author[6]{Matthew C. Zwier}
+\author[3]{David N. LeBard}
+\author[2]{Daniel M. Zuckerman}
+\author[1*]{Lillian T. Chong}
+
+\affil[1]{Department of Chemistry, University of Pittsburgh, Pittsburgh, PA}
+\affil[2]{Department of Biomedical Engineering, Oregon Health and Science University, Portland, OR}
+\affil[3]{OpenEye Scientific, Santa Fe, NM}
+\affil[4]{Department of Biological Sciences, University of Pittsburgh, Pittsburgh, PA}
+\affil[5]{Department of Chemistry, University of California Irvine, Irvine, CA}
+\affil[6]{Department of Chemistry, Drake University, Des Moines, IA}
+
+
+\corr{ltchong@pitt.edu}{LTC}  % Correspondence emails.  FMS and FS are the appropriate authors initials.
+
+%\orcid{Author 1 name}{AAAA-BBBB-CCCC-DDDD}
+%\orcid{Author 2 name}{EEEE-FFFF-GGGG-HHHH}
+\orcid{Anthony T. Bogetti}{0000-0003-0610-2879}
+\orcid{Jeremy M. G. Leung}{0000-0001-7021-4619}
+\orcid{John D. Russo}{0000-0002-2813-6554}
+\orcid{She Zhang}{0000-0001-9265-4498}
+\orcid{Jeff P. Thompson}{0000-0003-3134-9451}
+\orcid{Ali S. Saglam}{0000-0002-6513-8401}
+\orcid{Dhiman Ray}{0000-0002-7103-0886}
+\orcid{Rhea C. Abraham}{0000-0003-3823-3822}
+\orcid{James R. Faeder}{0000-0001-8127-609X}
+\orcid{Ioan Andricioaei}{0000-0002-6655-0721}
+\orcid{Joshua L. Adelman}{0000-0001-9986-7533}
+\orcid{Matthew C. Zwier}{0000-0002-0744-1146}
+\orcid{David N. LeBard}{0000-0002-0979-800X}
+\orcid{Daniel M. Zuckerman}{0000-0001-7662-2031}
+\orcid{Lillian T. Chong}{0000-0002-0590-483X}
+
+\contrib[\authfn{1}]{These authors contributed equally to this work}
+
+%\presentadd[\authfn{3}]{Department, Institute, Country}
+%\presentadd[\authfn{4}]{Department, Institute, Country}
+
+\blurb{This LiveCoMS document is maintained online on GitHub at \githubrepository; to provide feedback, suggestions, or help improve it, please visit the GitHub repository and participate via the issue tracker.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% PUBLICATION INFORMATION
+%%% Fill out these parameters when available
+%%% These are used when the "pubversion" option is invoked
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pubDOI{10.XXXX/YYYYYYY}
+\pubvolume{<volume>}
+\pubissue{<issue>}
+\pubyear{<year>}
+\articlenum{<number>}
+\datereceived{Day Month Year}
+\dateaccepted{Day Month Year}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ARTICLE START
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frontmatter}
+\maketitle
+
+\input{01_abstract}
+
+\end{frontmatter}
+
+\input{02_introduction}
+
+\input{03_workflow}
+
+\section{Advanced Tutorials}
+
+\input{04_binless}
+
+\input{05_membrane}
+
+\input{06_haMSM}
+
+\input{07_analysis}
+
+\input{08_M-WEM}
+
+\input{09_BNG}
+
+\input{10_author_contributions}
+
+\input{11_other_contributions}
+
+\input{12_conflict_interests}
+
+\input{13_funding}
+
+\input{14_content_links}
+
+\section*{Author Information}
+\makeorcid
+
+\bibliography{15_references.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% APPENDICES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\appendix
+
+
+\end{document}
