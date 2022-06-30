@@ -1,5 +1,5 @@
 # Suite of WESTPA 2.0 tutorials: Supplementary information
-This collection of files is a companion to the Suite of WESTPA 2.0 tutorials manuscript that has been submitted to [LiveCoMS](https://livecomsjournal.org/index.php/livecoms/). Each tutorial directory contains all files 
+This collection of files is a companion to a preprint consisting of a suite of WESTPA 2.0 advanced tutorials. Each tutorial directory contains all files 
 necessary for completing that tutorial. Programs such as WESTPA, AMBER, Python etc. will need to be 
 installed by the user and are not provided herein. The following is a list of the six tutorials in the manuscript.
 
