@@ -1,5 +1,5 @@
 # Suite of WESTPA 2.0 tutorials: Supplementary information
-This repository is a companion to the suite of six advanced tutorials for using major upgrades featured in the WESTPA 2.0 software package (see preprint).
+This repository is a companion to a suite of six advanced tutorials for using major upgrades featured in the WESTPA 2.0 software package (see preprint).
 
 #### 3.1 Creating “Binless” Resampling Schemes: Na+/Cl- Association Simulations
 #### 3.2 Adaptive Binning and HDF5 Storage of Coordinates: 1-Butanol Membrane Permeation
