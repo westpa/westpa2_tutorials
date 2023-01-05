@@ -14,8 +14,14 @@ These adaptive binning schemes enable quicker explorations of the chosen progres
 The MAB scheme is effective at surmounting barriers in a direction of interest \citep{torrillo_minimal_2021} while the adaptive Voronoi binning scheme \citep{zhang_exact_2010} is ideal for enhanced sampling in high-dimensional space (more than three dimensions) when all parts of the progress-coordinate space are potentially important. 
 However, if progress-coordinate space includes, for example, undesirable unfolded protein conformations, adaptive Voronoi binning might allocate bins and computing resources to those regions. 
 Besides the adaptive binning schemes, one can opt for a “binless” resampling scheme by defining a grouping function as described in \textbf{Advanced Tutorial 3.1} below. 
+The choice of $\tau$ (the resampling interval used for your WE simulation) should also be made on a system-by-system basis, with a sufficiently long time interval to capture relevant motions of interest but not so long that no net progress is made toward the target state. 
+Examples of tau values used for various systems in previous WE studies are provided in the first suite of WESTPA tutorials \citep{bogetti_suite_2019}. 
+Convergence of a WE simulation will ultimately depend on the overall goal of running the simulation, but will most likely involve the time-evolution of an observable of interest leveling off over time (e.g., trajectory flux into a user-defined target state). 
+If the convergence criterion is not met, a WE simulation using WESTPA can be resumed by simply running the \verb|./run.sh| script or resubmitting the job if it was originally run with slurm. 
+Even if changes were made to the progress coordinate or binning, WESTPA will incorporate those changes and resume the simulation accordingly.
 
-In the second (“Set”) stage, we recommend starting the WE simulation from multiple, pre-equilibrated starting conformations that are representative of the initial stable state (at least one “basis state” for each trajectory walker) to improve the sampling of the initial state and diversity of generated pathways to the target state. 
+In the second (“Set”) stage, we recommend starting the WE simulation from multiple, pre-equilibrated starting conformations that are representative of the initial stable state (at least one “basis state” for each trajectory walker) to improve the sampling of the initial state and diversity of generated pathways to the target state.
+Initial structures for a WE simulation should be chosen on a system-by-system basis, but in general, more starting structures (each with a slightly different initial configuration) should provide you with a more diverse trajectory ensemble. 
 
 In the third (“Go/Analyze”) stage, we recommend applying one of the following three options to further accelerate convergence to a steady state once successful pathways are generated. 
 The Rates from Event Durations (RED) analysis scheme \citep{degrave_red_2021} estimates rate constants more efficiently than the original WE scheme \citep{huber_weighted-ensemble_1996} by exploiting information in the transient region of the simulation.
