@@ -35,7 +35,6 @@ For the visualization portions of the notebook, nglview, matplotlib, and ipympl 
   $ conda env update --name <your WESTPA conda env> 
                                --file environment.yml
 \end{verbatim}
-~~
 
 \subsubsection{Setting up the WE Simulation}
 This simulation uses the same WE parameters ($\tau$, number of trajectories per bin, etc.) as the Basic WESTPA Tutorial (Na\textsuperscript{+}/Cl\textsuperscript{-} association simulations) \citep{bogetti_suite_2019}. 
@@ -65,8 +64,6 @@ In this example, trajectory walkers are grouped using k-means clustering.}
 \end{figure}
 
 \begin{verbatim}
-  # The main WEST configuration file for a simulation.
-  ---
   west:
     system:
       system_options:
@@ -85,7 +82,6 @@ In this example, trajectory walkers are grouped using k-means clustering.}
               at: [5]  # Location of binless mapper
                        # relative to base mapper
 \end{verbatim} 
-\pagebreak
 
 \textbf{Initiating a WE Simulation from Multiple Structures.} Ideally, a WE simulation is initiated from multiple pre-equilibrated structures that are representative of the initial state for the rare-event process of interest, e.g. using a conventional simulation or a separate WE simulation of the initial state.
 Within the WESTPA framework, we refer to these structures as "basis states". 
@@ -127,7 +123,6 @@ To apply the multitool to a combination of \verb|west.h5| files, place the \verb
 If all of the simulations used a custom grouping function (such as in \verb|group.py|), you must also include that file in the top-level analysis directory. 
 
 The files will be organized as follows:
-
 \begin{verbatim}
   01/
     west.h5

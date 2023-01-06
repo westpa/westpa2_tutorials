@@ -120,9 +120,7 @@ Minor variations of the "basic" trajectory storage protocol (e.g., use of differ
 
 \begin{verbatim}
     >>> trajectory = BasicMDTrajectory(
-                            traj_ext='.nc', 
-                            state_ext='.rst', 
-                            top=None)
+          traj_ext='.nc', state_ext='.rst', top=None)
 \end{verbatim}
 
 However, suppose that instead of storing the coordinate and topology data for trajectory segments in separate files (\verb|seg.dcd| and \verb|bstate.pdb|), we store them together in an HDF5 trajectory file (such as \verb|iter_XXXXXX.h5|) using the new HDF5 restarting framework available in WESTPA 2.0. This change can be accommodated by using the \verb|HDF5MDTrajectory| reader:
@@ -142,6 +140,8 @@ The RED scheme involves three steps:\linebreak
 The analysis bins and state definitions are placed in the analysis section of the \verb|west.cfg| file.
 
 \begin{verbatim}
+  # The main WEST configuration file for a simulation.
+  ---
   west:
     analysis:
       kinetics:
@@ -202,7 +202,6 @@ Note that the above is not part of the following tutorial and is only included t
 
 \textbf{2. Correct the Fluxes using the RED Scheme.} To correct the calculated fluxes using the RED scheme, we apply the \verb|w_red| command-line tool, which will read in the \verb|rate_evolution| and durations datasets in your \verb|direct.h5| file and calculates a correction factor for the flux value at each iteration.
 To use this tool, add the following to the analysis section of your \verb|west.cfg| file:
-
 \begin{verbatim}
   red:
     scheme: OVERALL
@@ -243,7 +242,7 @@ If the two schemes are converging to the same value, that can be one indication 
 To obtain the rate constant using the original scheme \citep{huber_weighted-ensemble_1996}, simply convert the \verb|rate_evolution| dataset to the appropriate units as discussed above.
 The time-evolution of this rate-constant estimate can then be compared with the RED-scheme estimate to assess convergence of the simulation to a steady state (\textbf{Figure 8A}).
 
-\begin{figure}[t]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=\columnwidth]{figures/Figure8_analysis.pdf}
 \caption{A) A comparison of the RED and original schemes for estimating the rate constant for protein-protein association involving the barnase/barstar system from previously published WE simulations \citep{saglam_proteinprotein_2019}.

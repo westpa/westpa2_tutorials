@@ -60,7 +60,7 @@ To run the WESTPA 2.0 simulation, the AMBER LIPID17 force field is applied to al
 All force field parameters were applied using the openmmforcefields Python package.
 
 \textbf{Progress Coordinate.} The progress coordinate (z) is defined as the (signed) distance from the center of mass (COM) of the butanol molecule to that of the closest membrane. 
-The width of a single leaflet of the membrane is roughly 2 nm, so if z $\leq$ 2 nm, between -2 and 2 nm, or >2 nm indicates that the butanol molecule has not crossed, is crossing, or has crossed the membrane. 
+The width of a single leaflet of the membrane is roughly 2 nm, so a z < -2 nm, between -2 nm and 2 nm, or >2 nm indicates that the butanol molecule has not yet crossed, is currently crossing, or has crossed the membrane, respectively. 
 A target state of z $\geq$3.5 nm is used to recycle trajectory walkers. 
 The actual computation is performed by measuring the signed distances between the COMs of butanol and each of the two membranes, z\textsubscript{1} and z\textsubscript{2}, using the MDTraj analysis suite and then taking the larger value of the two, z=max(z\textsubscript{1}, z\textsubscript{2}).
 
