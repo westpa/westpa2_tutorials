@@ -23,7 +23,7 @@ Even if changes were made to the progress coordinate or binning, WESTPA will inc
 In the second (“Set”) stage, we recommend starting the WE simulation from multiple, pre-equilibrated starting conformations that are representative of the initial stable state (at least one “basis state” for each trajectory walker) to improve the sampling of the initial state and diversity of generated pathways to the target state. 
 Initial structures for a WE simulation should be chosen on a system-by-system basis, but in general, more starting structures (each with a slightly different initial configuration) should provide you with a more diverse trajectory ensemble. 
 When the initial state of interest is well-defined, only a small number of structures may be necessary, but a truly heterogeneous initial state such as the unbound or unfolded states will require more structures to be representative of the intrinsic diversity.  
-As discussed in \textbf{Section 3}, these ‘basis’ structures will govern the recycling process (if used), so care should be exercised in choosing them.
+As discussed in \textbf{Section 3}, these "basis" structures will govern the recycling process (if used), so care should be exercised in choosing them.
 
 In the third (“Go/Analyze”) stage, we recommend applying one of the following three options to further accelerate convergence to a steady state once successful pathways are generated. 
 The Rates from Event Durations (RED) analysis scheme \citep{degrave_red_2021} estimates rate constants more efficiently than the original WE scheme \citep{huber_weighted-ensemble_1996} by exploiting information in the transient region of the simulation.

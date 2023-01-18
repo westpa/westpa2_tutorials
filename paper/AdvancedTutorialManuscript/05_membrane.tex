@@ -78,8 +78,6 @@ It is important to note that if the recycling of trajectories at a target state 
 An example of a MAB recursive binning scheme is shown below:
 
 \begin{verbatim}
-  # The main WEST configuration file for a simulation.
-  ---
   west:
     system:
       system_options:
@@ -113,7 +111,7 @@ The positions of these fixed bins can be specified in the WESS plugin section of
 \begin{verbatim}
   plugins:
     - plugin: westpa.westext.wess.WESSDriver
-      enabled: false
+      enabled: true
       do_reweighting: true
       window_size: 0.75
       bins:
@@ -136,7 +134,7 @@ Red: Files generated or prepared by the WESTPA 2.0 HDF5 framework. }
 
 \textbf{HDF5 Framework.} The setup for a WESTPA simulation with the HDF5 framework is similar to a vanilla one with the addition of the following procedures, which are a more detailed list of the same steps discussed briefly in \textbf{Advanced Tutorial 3.1} above:
 \begin{enumerate}
-    \item An iteration entry was provided in \verb|west.cfg| under \verb|west.data.data_refs| to specify where and how the per-iteration HDF5 files should be saved and named. 
+    \item An \verb|iteration| entry was provided in \verb|west.cfg| under \verb|west.data.data_refs| to specify where and how the per-iteration HDF5 files should be saved and named. 
     \item All the necessary files needed for propagating the next segment, such as state/restart and topology files, are passed on to WESTPA through the environment variable, \verb|$WEST_RESTART_RETURN|, after initialization and propagation of each iteration (\textbf{Figure 5A}). 
     This information is typically placed in the \verb|get_pcoord.sh| and \verb|runseg.sh| files. 
     \item All the trajectory files, and topology files if the topology is not stored as part of the trajectory file, are provided to WESTPA through the environment variable, \verb|$WEST_TRAJECTORY_RETURN|, after the propagation of each iteration. 
@@ -153,7 +151,7 @@ Second, the restart/state files are much easier to locate as when they are gener
 
 For this membrane permeation example, the per-iteration HDF5 files are saved in a folder named \verb|traj_segs/| and named following the pattern \verb|iter_XXXXXX.h5|. 
 The basis states are returned to WESTPA in \verb|get_pcoord.sh| as both the “trajectories” of the zero-th iteration and the restart files for propagating the first iteration and recycled walkers. 
-The dynamics is propagated using OpenMM for 100 ps for each iteration, and the output trajectory files and state xml files are returned to WESTPA in \verb|runseg.sh|. 
+The dynamics is propagated using OpenMM for 100 ps for each iteration, and the output trajectory files and state XML files are returned to WESTPA in \verb|runseg.sh|. 
 These files are deleted once they are returned in order to save disk space. 
 See the sample project setup files for detail.
 
@@ -168,4 +166,4 @@ Note that this tutorial assumes that you already have a completed simulation usi
 \subsubsection{Conclusion}
 In this tutorial, we have illustrated the relative ease in which one may use the WESTPA 2.0 software package to perform advanced WE path sampling simulations of membrane permeation for a small molecule (butanol). 
 Using a single workstation with two GPUs, our WE simulation can generate membrane permeation events within a few days of wall-clock time. 
-WE simulations, when using the WESTPA 2.0 HDF5 framework and MAB binning scheme, are relatively cost effective, both in terms of total compute time and disk storage.
+WE simulations, when using the WESTPA 2.0 HDF5 framework and MAB binning scheme, are relatively cost effective, both in terms of total computing time and disk storage.
