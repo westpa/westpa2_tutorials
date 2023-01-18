@@ -86,8 +86,8 @@ In this example, trajectory walkers are grouped using k-means clustering.}
 \textbf{Initiating a WE Simulation from Multiple Structures.} Ideally, a WE simulation is initiated from multiple pre-equilibrated structures that are representative of the initial state for the rare-event process of interest, e.g. using a conventional simulation or a separate WE simulation of the initial state.
 Within the WESTPA framework, we refer to these structures as "basis states". 
 If the simulation is run under non-equilibrium steady-state conditions, trajectories that reach the target state are “recycled” by terminating that trajectory and initiating a new trajectory with the same statistical weight from one of the basis states. 
-Structural files (xml files in this tutorial) for basis states contain the coordinates and velocities, and are placed in separate, numbered folders within the \verb|bstates/| directory. 
-Accompanying each xml file is a \verb|pcoord.init| text file which contains the progress coordinate value of that basis state. 
+Structural files (XML files in this tutorial) for basis states contain the coordinates and velocities, and are placed in separate, numbered folders within the \verb|bstates/| directory. 
+Accompanying each XML file is a \verb|pcoord.init| text file which contains the progress coordinate value of that basis state. 
 These progress coordinates are saved to the HDF5 file during the initialization process. 
 The \verb|bstates/| directory also contains a reference file (\verb|bstates.txt|) that lists all of the available basis states. 
 The \verb|bstates.txt| file is formatted with three columns, corresponding to the basis states’ names, associated probabilities, and folder name, respectively.
@@ -110,7 +110,7 @@ We also provide a Jupyter notebook that demonstrates the steps for cleaning up, 
 Note that this tutorial is using the new HDF5 trajectory storage framework, which will be explained further in \textbf{Advanced Tutorial 3.2}. 
 To enable the use of the HDF5 framework in your own simulation, you may use the current tutorials directory as an example. 
 The location of the trajectory h5 files will need to be specified in the \verb|west.cfg| file, and the appropriate restart and topology files will need to be copied to the locations specified in the \verb|get_pcoord.sh| and \verb|runseg.sh| files. 
-You will also need to make sure that the file extensions for any trajectory files are readable by \verb|mdtraj.load|, (e.g., Amber restart files must end in .ncrst) which simply requires renaming. 
+You will also need to make sure that the file extensions for any trajectory files are readable by \verb|mdtraj.load()|, (e.g., Amber restart files must end in .ncrst) which simply requires renaming. 
 To save disk space, trajectory files outputted by the dynamics engine can be deleted after every iteration in the \verb|post_iter.sh| file, which is located in the \verb|westpa_scripts/| directory.
 
 \subsubsection{Monitoring and Analyzing the WE Simulation}

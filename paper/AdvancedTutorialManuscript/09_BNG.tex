@@ -14,7 +14,7 @@ Specific learning objectives include:
     \item How to install the WESTPA/BNG plugin and set up a WESTPA/BNG simulation; 
     \item How to apply adaptive Voronoi binning, which can be used for both non-spatial and molecular systems; 
     \item How to run basic analyses tailored for high-dimensional WESTPA/BNG simulations.
-\end{enumerate} \linebreak
+\end{enumerate} 
 
 \subsubsection{Prerequisites}
 Users should have a working knowledge of BNGL models ({\url{http://bionetgen.org}}) and the WESTPA 2.0 software package. 
@@ -22,22 +22,22 @@ This tutorial will make use of the WEBNG Python package, which facilitates the i
 To install the WEBNG package: 
 
 \begin{verbatim}
-  $ git clone https://github.com/ASinanSaglam/webng.git
-  $ python -m pip install -r requirements.txt
+  $ git clone 
+        https://github.com/ASinanSaglam/webng.git
   $ python -m pip install -e .
 \end{verbatim}
 
 For common installation issues, see {\url{https://webng.readthedocs.io/en/latest/quickstart.html#installation}}. Alternatively the user can use a Docker container where the environment is already prepared correctly using the command: 
 \begin{verbatim}
   $ docker pull 
-    ghcr.io/westpa/westpa2_tutorials:webng
+          ghcr.io/westpa/westpa2_tutorials:webng
 \end{verbatim}
 
 Note that this requires a Docker installation, for more information see Docker documentation ({\url{https://docs.docker.com/get-docker}}). 
 Once the docker image is downloaded, you can run the image with:
 \begin{verbatim}
   $ docker run -it --entrypoint /bin/bash 
-          ghcr.io/westpa/westpa2_tutorials:webng
+            ghcr.io/westpa/westpa2_tutorials:webng
 \end{verbatim}
 
 \textbf{Computational requirements.} This tutorial requires \textasciitilde500 MB disk space. 

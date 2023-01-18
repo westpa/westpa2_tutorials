@@ -31,8 +31,9 @@ The users should have a basic understanding of running WE simulations using the 
 Also, a basic idea of the Markovian Milestoning framework is necessary. 
 For that purpose, the users should refer to the following manuscripts \cite{Vanden-Eijnden2009Markovian, Maragliano2009Free, Ray2022Markovian}.
 
-\textbf{Computational requirements.} In terms of software, this tutorial requires several Python modules (Numpy, Scipy, and Matplotlib) in addition to the WESTPA 2.0 software and NAMD 2.14 simulation package. 
-Note: M-WEM is implemented using the colvars module in NAMD. 
+\textbf{Computational requirements.} In terms of software, this tutorial requires several Python modules (NumPy, SciPy, and Matplotlib) in addition to the WESTPA 2.0 software and NAMD 2.14 simulation package. 
+
+\noindent Note: M-WEM is implemented using the Colvars module in NAMD. 
 Please check out the NAMD tutorial ({\url{http://www.ks.uiuc.edu/Training/Tutorials/namd-index.html}}) and colvars tutorial ({\url{https://colvars.github.io/colvars-refman-namd/colvars-refman-namd.html}}).
  
 In terms of computer hardware, this tutorial will require approximately 4 GB of disk space. 
@@ -69,7 +70,7 @@ Our aim is to simulate the MFPT of the transition from state A to state B.}
 \end{figure}
 
 \textbf{The system.} We will be studying the conformational change of gas phase alanine dipeptide using the M-WEM scheme. 
-The details of this example are provided in the article: Ray et al. 2022 \citep{Ray2022Markovian}. 
+The details of this example are provided in \citep{Ray2022Markovian}. 
 
 The free energy landscape for the system is shown in \textbf{Figure 9}. 
 To simulate the transition from state A to state B, 9 milestones are placed at $\phi$ = -80$^{\circ}$,  -60$^{\circ}$, -40$^{\circ}$, -20$^{\circ}$, 0$^{\circ}$, 20$^{\circ}$, 40$^{\circ}$, 60$^{\circ}$, 80$^{\circ}$. 
@@ -90,6 +91,7 @@ Make sure to edit the \verb|env.sh| file to include the path to your NAMD instal
 
 In the \verb|common_files/| directory the topology (.psf), the parameter (.prm) and the NAMD configuration files are provided. 
 The structure file (.pdb) in this directory and in the \verb|equilibration/| directory are prepared by the \verb|build.py| script, and are different for each milestone cell. 
+\linebreak
 
 Once you have your M-WEM setup ready, prepare the cell-specific folders by running the following command:
 
@@ -103,7 +105,7 @@ The \verb|milestone_equilibration.xsc|, \verb|milestone_equilibration.coor| and\
 
 The running of the M-WEM simulation for each individual cell is done separately, for the convenience of parallelizing it in a computing cluster. 
 The \verb|run.sh| script performs the simulation via the command \verb|./run.sh|.
-Unlike typical WESTPA setups, here the initialization setup code is included in the \verb|run.sh| script. 
+Unlike typical WESTPA setups, the initialization setup code is included in the \verb|run.sh| script here. 
 Although it does not make a significant difference for a small system like this, we found it is more convenient to submit multiple milestone jobs to a computer cluster by using a single \verb|run.sh| script. 
 Both the equilibration and running of each cell is performed by executing the following command from within each cell-specific folder:
 
@@ -173,7 +175,7 @@ Also, \verb|analysis_build.py| will produce the following directories for milest
 
 \textbf{Step 2.} After the analysis of the WESTPA output files are done, we will proceed to analyze our results using the Markovian milestoning framework in two Jupyter notebooks: \verb|kinetics.ipynb| and \verb|free-energy-landscape.ipynb|.
 
-First run the \verb|kinetics.ipynb| notebook to obtain the mean first passage time and the committors. 
+First, run the \verb|kinetics.ipynb| notebook to obtain the mean first passage time and the committors. 
 This will also produce the probability distribution file in the milestone space. Details can be found inside the notebook. 
 The MFPT convergence plots and the committor functions should look like \textbf{Figures 10 and 11}.
 
