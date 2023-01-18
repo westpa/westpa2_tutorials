@@ -120,7 +120,7 @@ Minor variations of the "basic" trajectory storage protocol (e.g., use of differ
 
 \begin{verbatim}
     >>> trajectory = BasicMDTrajectory(
-          traj_ext='.nc', state_ext='.rst', top=None)
+        traj_ext='.nc', state_ext='.ncrst', top=None)
 \end{verbatim}
 
 However, suppose that instead of storing the coordinate and topology data for trajectory segments in separate files (\verb|seg.dcd| and \verb|bstate.pdb|), we store them together in an HDF5 trajectory file (such as \verb|iter_XXXXXX.h5|) using the new HDF5 restarting framework available in WESTPA 2.0. This change can be accommodated by using the \verb|HDF5MDTrajectory| reader:
@@ -134,14 +134,12 @@ The examples above highlight the flexibility and convenience provided by the \ve
 \subsubsection{Calculating rate constants using the original WE scheme}
 
 For the two remaining sections of this tutorial, we will focus on applying the RED analysis scheme \citep{degrave_red_2021} to calculate the association rate constant from previously published protein-protein binding simulations involving the barnase/barstar system \citep{saglam_proteinprotein_2019}.
-The RED scheme involves three steps:\linebreak
+The RED scheme involves three steps:
 
 \textbf{1. Calculate State Populations and the Flux into the Target State.} The target state can be defined using either the WE progress coordinate or auxiliary coordinates.
 The analysis bins and state definitions are placed in the analysis section of the \verb|west.cfg| file.
 
 \begin{verbatim}
-  # The main WEST configuration file for a simulation.
-  ---
   west:
     analysis:
       kinetics:
@@ -172,7 +170,7 @@ To use \verb|w_ipa| for flux analysis, one would run the following at the comman
     $ w_ipa -ao
 \end{verbatim}
 
-This command will analyze the \verb|pcoord| data from \verb|west.h5| using the scheme for bins and states defined in \verb|west.cfg| and not drop the user into an ipython environment (to make use of that functionality, remove the \verb|-ao| options from the above command).
+This command will analyze the \verb|pcoord| data from \verb|west.h5| using the scheme for bins and states defined in \verb|west.cfg| and not drop the user into an IPython environment (to make use of that functionality, remove the \verb|-ao| options from the above command).
 The resulting \verb|assign.h5| and \verb|direct.h5| files, the latter containing the fluxes, will be outputted to a newly created directory that is named for the relevant scheme (in this case that will be in \verb|./ANALYSIS/OVERALL/|.
 The \verb|evolution:cumulative| option (which is the default option) ensures that all evolution datasets are calculated with a rolling average, a requirement for using the RED scheme (see below). 
 

@@ -124,7 +124,7 @@ We will construct the haMSM from the three extended runs, and restart a new set 
 ./restart*/                          [Other restarts]
 \end{verbatim}
 
-The following files containg more adjustable parameters or are more tightly integrated in the workflow and therefore warrant a more in-depth explanation.
+The following files contain more adjustable parameters or are more tightly integrated in the workflow and therefore warrant a more in-depth explanation.
 
 \verb|west.cfg|: The haMSM restarting plugin requires a number of parameters to be set in the appropriate section of \verb|west.cfg|. 
 Details regarding these parameters are listed at {\url{https://westpa.readthedocs.io/en/latest/documentation/ext/westpa.westext.hamsm_restarting.html#west-cfg}}.
@@ -186,3 +186,4 @@ For detailed instructions on how to analyze your simulation results, please refe
 Complex systems may exhibit relaxation slow enough to prevent direct measurement of rate constants using probability flux in WE. 
 This tutorial therefore presents the haMSM plugin for leveraging relaxation-phase WE simulations by automatically (i) building a haMSM; (ii) generating an estimate of the steady-state probability distribution and the corresponding steady flux; and (iii) if desired, restarting a new WE simulation or set of simulations from the estimated steady state. 
 Each haMSM yields an estimate for the MFPT and FPT distribution using \verb|msm_we|.
+\pagebreak
