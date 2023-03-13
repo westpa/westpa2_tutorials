@@ -17,4 +17,4 @@ w_init \
   $BSTATE_ARGS \
   $TSTATE_ARGS \
   --segs-per-state 5 \
-  --work-manager=threads "$@"
+  --work-manager threads "$@"
