@@ -1,5 +1,0 @@
-To use MAB with a two-dimensional progress coordinate, replace the 
-pcoord.init, west.cfg, get_pcoord.sh and runseg.sh in the tutorial 
-directory with these updated files, which add the radius of gyration
-of the ligand as a second progress coordinate dimension for the
-simulation. Also move get_rog.py to common_files.

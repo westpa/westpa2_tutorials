@@ -1,5 +1,0 @@
-trajin parent.rst7
-trajin seg.rst7
-reference reference.pdb 
-rms reference out rmsd.temp @CA
-
