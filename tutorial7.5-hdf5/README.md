@@ -1,4 +1,4 @@
-# Tutorial 3.1: Creating "binless" resampling schemes: Na+/Cl- association simulations
+# Tutorial 7.5: Creating "binless" resampling schemes: Na+/Cl- association simulations
 This tutorial is meant to introduce advanced techniques when using WESTPA software for running Weighted Ensemble (WE) simulations.
 
 ## Tutorial files

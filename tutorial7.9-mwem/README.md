@@ -1,6 +1,8 @@
-# Tutorial for Markovian Weighted Ensemble Milestoning (M-WEM)
+# Tutorial 7.9: Markovian Weighted Ensemble Milestoning (M-WEM)
 
-Author: Dhiman Ray
+## Authors
+
+* **Dhiman Ray** - *Primary work* - [dhimanray](https://github.com/dhimanray)
 
 ## Installation link: 
 https://github.com/dhimanray/MWEM

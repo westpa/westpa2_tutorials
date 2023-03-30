@@ -1,4 +1,4 @@
-# Tutorial 3.3: Analysis and Restarting with haMSMs: NTL9 Protein Folding
+# Tutorial 7.7: Analysis and Restarting with haMSMs: NTL9 Protein Folding
 This tutorial demontrates the use of an haMSM restarting workflow in WE simulations of the ms-timescale folding process of the NTL9 protein.
 
 ## Tutorial files
