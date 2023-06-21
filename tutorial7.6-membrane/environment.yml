@@ -1,15 +1,15 @@
 name: permeability-tutorial
 channels:
  - conda-forge
- - omnia
 dependencies:
  - mdtraj>=1.9.5
  - pip>=21.1.2
  - openmmforcefields
  - openff-forcefields>=2.0.0
  - numpy>=1.16.0
- - python=3.8
+ - python>=3.8
  - scipy>=0.19.1
- - cudatoolkit==10.0.130
+ - cudatoolkit==11.7.*  # Users should double check to make sure this version works with your GPU's Cuda Driver Version
  - Cython>=0.29.16
- - openmm>=7.6
+ - openmm>=8.0.0
+ - openff-units>=0.2.0
