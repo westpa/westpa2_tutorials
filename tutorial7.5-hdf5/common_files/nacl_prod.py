@@ -12,7 +12,9 @@ system.addForce(MonteCarloBarostat(1*bar, 300*kelvin))
 integrator = LangevinIntegrator(300*kelvin, 1/picosecond, 0.002*picoseconds)
 integrator.setRandomNumberSeed(RAND)
 
-simulation = Simulation(pdb.topology, system, integrator)
+platform = Platform.getPlatformByName('CPU')
+
+simulation = Simulation(pdb.topology, system, integrator, platform)
 simulation.context.setPositions(pdb.positions)
 
 simulation.loadState('parent.xml')
