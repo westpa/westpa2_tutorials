@@ -24,7 +24,7 @@ mkdir ref_files
 cp $WEST_SIM_ROOT/ref_files/reference.pdb ref_files/reference.pdb
 
 $CPPTRAJ $WEST_SIM_ROOT/ref_files/ntl9.prmtop < $WEST_SIM_ROOT/ref_files/ptraj_init.in || exit 1
-gawk '{print $2}' rmsd.temp | tail -1 > pcoord.dat || exit 1
+awk '{print $2}' rmsd.temp | tail -1 > pcoord.dat || exit 1
 cat pcoord.dat > $WEST_PCOORD_RETURN
 
 if [ -n "$SEG_DEBUG" ] ; then
