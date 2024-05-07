@@ -50,5 +50,5 @@ esac
 
 # Get progress coordinate
 $CPPTRAJ ntl9.prmtop <ptraj.in || exit 1
-gawk '{print $2}' rmsd.temp | tail -2 > pcoord.dat || exit 1
+awk '{print $2}' rmsd.temp | tail -2 > pcoord.dat || exit 1
 cat pcoord.dat > $WEST_PCOORD_RETURN
