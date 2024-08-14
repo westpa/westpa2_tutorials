@@ -17,7 +17,7 @@ class System(WESTSystem):
         binbounds = [0.0,1.00] + [1.10+0.1*i for i in range(35)] + [4.60+0.2*i for i in range(10)] + [6.60+0.6*i for i in range(6)] + [float('inf')]
         
         self.bin_mapper = RectilinearBinMapper([binbounds])
-        self.bin_target_counts = numpy.empty((self.bin_mapper.nbins,), numpy.int)
+        self.bin_target_counts = numpy.empty((self.bin_mapper.nbins,), int)
         self.bin_target_counts[...] = 4 
 
 def coord_loader(fieldname, coord_file, segment, single_point=False):
