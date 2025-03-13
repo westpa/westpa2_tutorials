@@ -83,13 +83,13 @@ class IterationProcessor(object):
             istate_type_arr = h5file['ibstates/0/istate_index']['istate_type']
 
             if int(parent_seg_arr[iseg]) < 0:
-                parent_seg = int(parent_seg_arr[iseg])*-1
+                parent_seg = int(parent_seg_arr[iseg])*-1 - 1
                 parent_id = bstate_id_arr[parent_seg]
                 parent_iter = 0 # this means that the parent is a bstate
             else:
                 parent_id = int(parent_seg_arr[iseg])
             
-            parent_iter_h5_filepath = "traj_segs/iter_"+str(int(parent_iter)).zfill(6)+".h5"
+            parent_iter_h5_filepath = f"traj_segs/iter_{parent_iter:>06}.h5"
             parent_pointer = h5py.File(parent_iter_h5_filepath)['pointer'][:,1]
             parent_where = numpy.where(parent_pointer == parent_id)
             parent_traj = mdtraj.load(parent_iter_h5_filepath)[parent_where]
@@ -101,7 +101,7 @@ class IterationProcessor(object):
             parent_coord_array = parent_traj.xyz[-1,:2,:] # the :2 index just gets the coordinates for Na+ and Cl-
 
             # don't change the following block
-            iter_h5_filepath = "traj_segs/iter_"+str(int(n_iter)).zfill(6)+".h5"
+            iter_h5_filepath = f"traj_segs/iter_{parent_iter:>06}.h5"
             pointer = h5py.File(iter_h5_filepath)['pointer'][:,1]
             where = numpy.where(pointer == iseg)
             iter_traj = mdtraj.load(iter_h5_filepath)[where]
