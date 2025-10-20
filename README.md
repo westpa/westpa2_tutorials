@@ -1,5 +1,5 @@
 # Suite of WESTPA 2.0 advanced tutorials: Supplementary information
-This repository provides input/output files for the suite of six advanced tutorials on using major upgrades in the WESTPA 2.0 software package (see preprint, which has been submitted to LiveCoMS: https://github.com/westpa/tutorials/blob/main/paper/CombinedSuiteofWESTPATutorials.pdf).
+This repository provides input/output files for the suite of six advanced tutorials on using major upgrades in the WESTPA 2.0 software package (see LiveCoMS aritcle: https://github.com/westpa/tutorials/blob/main/paper/CombinedSuiteofWESTPATutorials.pdf).
 
 The rest of the files (Tutorials 7.1-7.4) are located in https://github.com/westpa/westpa_tutorials. Check out the Tutorial Hub at https://github.com/westpa/tutorials for more information.
 
